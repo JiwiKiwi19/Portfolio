@@ -6,6 +6,7 @@ import Projects from "@/components/Projects";
 import Experience from "@/components/Experience";
 import Contact from "@/components/Contact";
 import ScrollToTop from "@/components/ScrollToTop";
+import WesternWebring from "src/components/WesternWebring";
 
 const Index = () => {
   return (
@@ -25,6 +26,7 @@ const Index = () => {
       <section id="contact">
         <Contact />
       </section>
+      <WesternWebring />
       <ScrollToTop />
     </div>
   );
