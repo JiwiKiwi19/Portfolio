@@ -25,8 +25,10 @@ const Index = () => {
       </section>
       <section id="contact">
         <Contact />
+        <div className="flex justify-center mt-4">
+          <WesternWebring />
+        </div>
       </section>
-      <WesternWebring />
       <ScrollToTop />
     </div>
   );
