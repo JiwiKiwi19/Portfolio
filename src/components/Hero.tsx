@@ -4,7 +4,7 @@ import { Github, Linkedin, Mail, ExternalLink } from "lucide-react";
 const Hero = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [displayedText, setDisplayedText] = useState("");
-  const fullText = "Full Stack Developer & Data Analyst";
+  const fullText = "Statistical & Data Analyst";
 
   useEffect(() => {
     let i = 0;
