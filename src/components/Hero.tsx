@@ -32,7 +32,7 @@ const Hero = () => {
           isHovered ? "opacity-100" : "opacity-0"
         }`}
         style={{
-          backgroundImage: "url('/cs.jpg')",
+          backgroundImage: "url('/baseball-hero.jpg')",
           backgroundPosition: "center",
           backgroundSize: "cover",
         }}

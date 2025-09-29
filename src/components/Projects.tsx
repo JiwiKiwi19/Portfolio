@@ -102,7 +102,12 @@ const Projects = () => {
               <div
                 className="h-48 rounded-lg mb-6 bg-gradient-to-br from-primary/20 to-primary/5 flex flex-col items-center justify-center relative overflow-hidden group-hover:scale-105 transition-transform duration-300"
                 style={{
-                  backgroundImage: "url('/project.jpg')",
+                  backgroundImage:
+                    index === 2
+                      ? "url('/baseball-analytics.jpg')"
+                      : index === 1
+                      ? "url('/restaurant-spot.jpg')"
+                      : "url('/project.jpg')",
                   backgroundPosition: "center",
                   backgroundSize: "cover",
                 }}
