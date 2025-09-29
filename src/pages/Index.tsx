@@ -6,7 +6,7 @@ import Projects from "@/components/Projects";
 import Experience from "@/components/Experience";
 import Contact from "@/components/Contact";
 import ScrollToTop from "@/components/ScrollToTop";
-import WesternWebring from "src/components/WesternWebring";
+import WesternWebring from "@/components/WesternWebring";
 
 const Index = () => {
   return (
