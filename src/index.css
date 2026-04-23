@@ -8,56 +8,56 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Portfolio Dark Theme */
-    --background: 240 10% 9%;
-    --foreground: 0 0% 88%;
+    /* Portfolio Light Theme - White & Navy */
+    --background: 0 0% 100%;
+    --foreground: 220 40% 12%;
 
-    --card: 240 8% 12%;
-    --card-foreground: 0 0% 88%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 40% 12%;
 
-    --popover: 240 8% 12%;
-    --popover-foreground: 0 0% 88%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 40% 12%;
 
-    /* Teal accent as primary */
-    --primary: 180 100% 27%;
-    --primary-foreground: 0 0% 98%;
+    /* Navy accent as primary */
+    --primary: 220 70% 25%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 240 6% 20%;
-    --secondary-foreground: 0 0% 88%;
+    --secondary: 220 15% 95%;
+    --secondary-foreground: 220 40% 12%;
 
-    --muted: 240 6% 17%;
-    --muted-foreground: 240 5% 65%;
+    --muted: 220 15% 96%;
+    --muted-foreground: 220 10% 45%;
 
-    --accent: 180 100% 27%;
-    --accent-foreground: 0 0% 98%;
+    --accent: 220 70% 25%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 240 6% 20%;
-    --input: 240 6% 20%;
-    --ring: 180 100% 27%;
+    --border: 220 15% 90%;
+    --input: 220 15% 90%;
+    --ring: 220 70% 25%;
 
     --radius: 0.75rem;
 
     /* Custom Portfolio Colors */
-    --portfolio-bg: 240 10% 9%;
-    --portfolio-surface: 240 8% 12%;
-    --portfolio-surface-hover: 240 6% 20%;
-    --portfolio-accent: 180 100% 27%;
-    --portfolio-accent-muted: 180 50% 35%;
-    --portfolio-text: 0 0% 88%;
-    --portfolio-text-muted: 240 5% 65%;
+    --portfolio-bg: 0 0% 100%;
+    --portfolio-surface: 220 15% 98%;
+    --portfolio-surface-hover: 220 15% 94%;
+    --portfolio-accent: 220 70% 25%;
+    --portfolio-accent-muted: 220 50% 45%;
+    --portfolio-text: 220 40% 12%;
+    --portfolio-text-muted: 220 10% 45%;
 
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(240 10% 9%), hsl(240 6% 20%));
-    --gradient-card: linear-gradient(135deg, hsl(240 8% 12%), hsl(240 6% 17%));
-    --gradient-accent: linear-gradient(135deg, hsl(180 100% 27%), hsl(180 80% 35%));
+    --gradient-hero: linear-gradient(135deg, hsl(0 0% 100%), hsl(220 15% 96%));
+    --gradient-card: linear-gradient(135deg, hsl(0 0% 100%), hsl(220 15% 98%));
+    --gradient-accent: linear-gradient(135deg, hsl(220 70% 25%), hsl(220 60% 40%));
 
     /* Shadows */
-    --shadow-elegant: 0 10px 30px -10px hsl(180 100% 27% / 0.2);
-    --shadow-card: 0 8px 16px hsl(0 0% 0% / 0.4);
-    --shadow-hover: 0 15px 30px hsl(0 0% 0% / 0.7);
+    --shadow-elegant: 0 10px 30px -10px hsl(220 70% 25% / 0.25);
+    --shadow-card: 0 4px 12px hsl(220 40% 12% / 0.08);
+    --shadow-hover: 0 12px 28px hsl(220 40% 12% / 0.15);
 
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);

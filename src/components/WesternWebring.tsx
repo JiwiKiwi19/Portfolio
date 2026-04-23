@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 
 const WesternWebring = () => {
   useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://jacobl04.github.io/Western-Webrings/webring.js";
+    const script = document.createElement('script');
+    script.src = 'https://jacobl04.github.io/Western-Webrings/webring.js';
     script.async = true;
     document.body.appendChild(script);
   }, []);

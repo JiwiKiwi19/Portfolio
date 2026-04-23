@@ -25,62 +25,42 @@ const Projects = () => {
   const projects = [
     {
       title: "Thoth",
-      description:
-        "Modern authentication system with secure login, sign-up, and JWT-based token storage. Built with responsive design and real-time data capabilities.",
-      technologies: [
-        "React",
-        "Next.js",
-        "TypeScript",
-        "PostgreSQL",
-        "Supabase",
-        "TailwindCSS",
-      ],
+      description: "Modern authentication system with secure login, sign-up, and JWT-based token storage. Built with responsive design and real-time data capabilities.",
+      technologies: ["React", "Next.js", "TypeScript", "PostgreSQL", "Supabase", "TailwindCSS"],
       githubUrl: "https://github.com/JiwiKiwi19",
       liveUrl: "#",
-      period: "May 2025 – Aug 2025",
+      period: "May 2025 – Aug 2025"
     },
     {
       title: "SPOT Restaurant Management",
-      description:
-        "Full-stack restaurant order management system with real-time order tracking, table arrangement, and live queue management for streamlined operations.",
-      technologies: [
-        "React Native",
-        "Node.js",
-        "TypeScript",
-        "PostgreSQL",
-        "Supabase",
-        "Express.js",
-      ],
+      description: "Full-stack restaurant order management system with real-time order tracking, table arrangement, and live queue management for streamlined operations.",
+      technologies: ["React Native", "Node.js", "TypeScript", "PostgreSQL", "Supabase", "Express.js"],
       githubUrl: "https://github.com/JiwiKiwi19",
       liveUrl: "#",
-      period: "Jan 2025 – May 2025",
+      period: "Jan 2025 – May 2025"
     },
     {
-      title: "Baseball Analytics ML",
-      description:
-        "Machine learning project predicting MLB players' future stats using OPS prediction. Features data preprocessing, model evaluation, and performance visualization.",
-      technologies: [
-        "Python",
-        "Jupyter",
-        "scikit-learn",
-        "pandas",
-        "NumPy",
-        "Matplotlib",
-      ],
+      title: "MLB Player Performance Predictor",
+      description: "Advanced machine learning model predicting baseball player performance using historical stats, OPS calculations, and sabermetrics. Features interactive visualizations and player comparison tools.",
+      technologies: ["Python", "scikit-learn", "pandas", "Matplotlib", "Seaborn", "statsmodels"],
       githubUrl: "https://github.com/JiwiKiwi19",
       liveUrl: "#",
-      period: "Sep 2024 – Dec 2024",
+      period: "Sep 2024 – Dec 2024"
     },
+    {
+      title: "Baseball Stats Dashboard",
+      description: "Interactive web dashboard for visualizing MLB player statistics with real-time data updates, team comparisons, and advanced analytics including WAR, BABIP, and FIP calculations.",
+      technologies: ["React", "D3.js", "Node.js", "MLB-StatsAPI", "PostgreSQL", "TailwindCSS"],
+      githubUrl: "https://github.com/JiwiKiwi19",
+      liveUrl: "#",
+      period: "Jun 2024 – Aug 2024"
+    }
   ];
 
   return (
     <section ref={sectionRef} className="py-20 px-6 bg-secondary/20">
       <div className="max-w-6xl mx-auto">
-        <div
-          className={`text-center mb-16 ${
-            isVisible ? "animate-fade-in" : "opacity-0"
-          }`}
-        >
+        <div className={`text-center mb-16 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
           <h2 className="text-4xl font-bold text-primary mb-4">
             Featured Projects
           </h2>
@@ -94,22 +74,18 @@ const Projects = () => {
             <div
               key={project.title}
               className={`portfolio-card rounded-xl p-6 group ${
-                isVisible ? "animate-fade-in" : "opacity-0"
+                isVisible ? 'animate-fade-in' : 'opacity-0'
               }`}
               style={{ animationDelay: `${index * 0.2}s` }}
             >
               {/* Project header with background image */}
-              <div
+              <div 
                 className="h-48 rounded-lg mb-6 bg-gradient-to-br from-primary/20 to-primary/5 flex flex-col items-center justify-center relative overflow-hidden group-hover:scale-105 transition-transform duration-300"
                 style={{
-                  backgroundImage:
-                    index === 2
-                      ? "url('/baseball-analytics.jpg')"
-                      : index === 1
-                      ? "url('/restaurant-spot.jpg')"
-                      : "url('/project.jpg')",
+                  backgroundImage: index === 2 ? "url('/baseball-analytics.jpg')" : 
+                                 index === 3 ? "url('/baseball-stats.jpg')" : "url('/project.jpg')",
                   backgroundPosition: "center",
-                  backgroundSize: "cover",
+                  backgroundSize: "cover"
                 }}
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/80 to-primary/40 group-hover:from-primary/70 group-hover:to-primary/30 transition-all duration-300" />
@@ -117,7 +93,9 @@ const Projects = () => {
                   <h3 className="text-2xl font-bold text-white mb-2">
                     {project.title}
                   </h3>
-                  <p className="text-white/80 text-sm">{project.period}</p>
+                  <p className="text-white/80 text-sm">
+                    {project.period}
+                  </p>
                 </div>
               </div>
 

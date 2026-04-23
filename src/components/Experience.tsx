@@ -30,20 +30,20 @@ const Experience = () => {
       responsibilities: [
         "Processed and analyzed Channel State Information (CSI) data using Wi-Fi signals to detect human presence",
         "Configured Wi-Fi sensing hardware, including access points and antennas, to collect high-quality CSI data",
-        "Worked with Python and MATLAB to preprocess data and develop machine learning models",
-      ],
+        "Worked with Python and MATLAB to preprocess data and develop machine learning models"
+      ]
     },
     {
       title: "Personal Training Assistant",
       company: "Private Care",
-      location: "Aurora, ON",
+      location: "Aurora, ON", 
       period: "Jul 2024 – Present",
       responsibilities: [
         "Assisted with walking exercises, providing support and encouragement for mobility improvement",
         "Spent 200+ hours on specialized care activities to ensure comfort and accessibility",
         "Conducted balance practice sessions, helping to improve stability and coordination",
-        "Encouraged progressive independence while ensuring safety throughout all activities",
-      ],
+        "Encouraged progressive independence while ensuring safety throughout all activities"
+      ]
     },
     {
       title: "Tutor",
@@ -54,19 +54,15 @@ const Experience = () => {
         "Helped 10+ students with academic success by creating custom homework and presentations",
         "Emphasized reinforcement techniques in reviewing and mastering challenging course material",
         "Initiated communication with parents to establish strong support systems for academic success",
-        "Developed personalized learning strategies to accommodate different learning styles",
-      ],
-    },
+        "Developed personalized learning strategies to accommodate different learning styles"
+      ]
+    }
   ];
 
   return (
     <section ref={sectionRef} className="py-20 px-6">
       <div className="max-w-4xl mx-auto">
-        <div
-          className={`text-center mb-16 ${
-            isVisible ? "animate-fade-in" : "opacity-0"
-          }`}
-        >
+        <div className={`text-center mb-16 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
           <h2 className="text-4xl font-bold mb-4">
             <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
               Experience
@@ -79,17 +75,17 @@ const Experience = () => {
             <div
               key={exp.title}
               className={`portfolio-card rounded-xl p-8 transform hover:scale-[1.02] transition-all duration-300 ${
-                isVisible ? "animate-fade-in" : "opacity-0"
+                isVisible ? 'animate-fade-in' : 'opacity-0'
               }`}
-              style={{
+              style={{ 
                 animationDelay: `${index * 0.2}s`,
                 backgroundImage: "url('/experience.jpg')",
                 backgroundPosition: "center",
-                backgroundSize: "cover",
+                backgroundSize: "cover"
               }}
             >
               <div className="absolute inset-0 bg-gradient-to-br from-card/95 to-card/85 rounded-xl" />
-
+              
               <div className="relative z-10">
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-6">
                   <div>
@@ -110,10 +106,10 @@ const Experience = () => {
 
                 <div className="space-y-3">
                   {exp.responsibilities.map((responsibility, idx) => (
-                    <div
+                    <div 
                       key={idx}
                       className="flex items-start space-x-3"
-                      style={{ animationDelay: `${index * 0.2 + idx * 0.1}s` }}
+                      style={{ animationDelay: `${(index * 0.2) + (idx * 0.1)}s` }}
                     >
                       <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
                       <span className="text-foreground leading-relaxed">

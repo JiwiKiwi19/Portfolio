@@ -13,11 +13,7 @@ const Navigation = () => {
 
   const socialLinks = [
     { icon: Github, href: "https://github.com/JiwiKiwi19", label: "GitHub" },
-    {
-      icon: Linkedin,
-      href: "https://linkedin.com/in/jiwon-lee-7614362ab",
-      label: "LinkedIn",
-    },
+    { icon: Linkedin, href: "https://linkedin.com/in/jiwon-lee-7614362ab", label: "LinkedIn" },
     { icon: Mail, href: "mailto:ousfame5@gmail.com", label: "Email" },
   ];
 
@@ -26,8 +22,8 @@ const Navigation = () => {
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a
-            href="#"
+          <a 
+            href="#" 
             className="text-xl font-bold text-primary hover:scale-105 transition-transform"
           >
             JL
