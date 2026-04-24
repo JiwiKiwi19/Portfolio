@@ -5,7 +5,7 @@ const Hero = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [displayedText, setDisplayedText] = useState("");
   const fullText = "Full Stack Developer & Baseball Analytics Enthusiast";
-  
+
   useEffect(() => {
     let i = 0;
     const typingInterval = setInterval(() => {
@@ -16,20 +16,20 @@ const Hero = () => {
         clearInterval(typingInterval);
       }
     }, 100);
-    
+
     return () => clearInterval(typingInterval);
   }, []);
 
   return (
-    <header 
+    <header
       className="relative min-h-[400px] hero-bg overflow-hidden transition-all duration-500 ease-out"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Background overlay that appears on hover */}
-      <div 
+      <div
         className={`absolute inset-0 transition-opacity duration-500 ${
-          isHovered ? 'opacity-100' : 'opacity-0'
+          isHovered ? "opacity-100" : "opacity-0"
         }`}
         style={{
           backgroundImage: "url('/baseball-hero.jpg')",
@@ -37,7 +37,7 @@ const Hero = () => {
           backgroundSize: "cover",
         }}
       >
-        <div className="absolute inset-0 bg-black/70" />
+        <div className="absolute inset-0 grey" />
       </div>
 
       <div className="relative z-10 flex flex-col items-center justify-center h-full min-h-[400px] px-6 text-center">
@@ -58,10 +58,18 @@ const Hero = () => {
         {/* Social Icons */}
         <div className="flex gap-6 mt-4">
           {[
-            { icon: Github, label: "GitHub", href: "https://github.com/JiwiKiwi19" },
-            { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/in/jiwon-lee-7614362ab" },
+            {
+              icon: Github,
+              label: "GitHub",
+              href: "https://github.com/JiwiKiwi19",
+            },
+            {
+              icon: Linkedin,
+              label: "LinkedIn",
+              href: "https://linkedin.com/in/jiwon-lee-7614362ab",
+            },
             { icon: Mail, label: "Email", href: "mailto:ousfame5@gmail.com" },
-            { icon: ExternalLink, label: "Portfolio", href: "#projects" }
+            { icon: ExternalLink, label: "Portfolio", href: "#projects" },
           ].map(({ icon: Icon, label, href }, index) => (
             <a
               key={label}

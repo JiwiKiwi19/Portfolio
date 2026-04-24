@@ -7,6 +7,7 @@ import Experience from "@/components/Experience";
 import Contact from "@/components/Contact";
 import ScrollToTop from "@/components/ScrollToTop";
 import WesternWebring from "@/components/WesternWebring";
+import BatCursor from "@/components/BatCursor";
 
 const Index = () => {
   return (
@@ -28,6 +29,7 @@ const Index = () => {
       </section>
       <WesternWebring />
       <ScrollToTop />
+      <BatCursor />
     </div>
   );
 };
