@@ -2,7 +2,23 @@ import React, { useEffect } from "react";
 
 const WesternWebring = () => {
   useEffect(() => {
+    const stylesheetId = "western-webring-styles";
+    const scriptId = "western-webring-script";
+
+    if (!document.getElementById(stylesheetId)) {
+      const link = document.createElement("link");
+      link.id = stylesheetId;
+      link.rel = "stylesheet";
+      link.href = "https://jacobl04.github.io/Western-Webrings/webring.css";
+      document.head.appendChild(link);
+    }
+
+    if (document.getElementById(scriptId)) {
+      return;
+    }
+
     const script = document.createElement("script");
+    script.id = scriptId;
     script.src = "https://jacobl04.github.io/Western-Webrings/webring.js";
     script.async = true;
     document.body.appendChild(script);
