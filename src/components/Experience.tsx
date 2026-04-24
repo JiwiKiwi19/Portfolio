@@ -50,10 +50,8 @@ const Experience = () => {
       location: "Aurora, ON",
       period: "Jul 2024 – Present",
       responsibilities: [
-        "Assisted with walking exercises, providing support and encouragement for mobility improvement",
-        "Spent 200+ hours on specialized care activities to ensure comfort and accessibility",
-        "Conducted balance practice sessions, helping to improve stability and coordination",
-        "Encouraged progressive independence while ensuring safety throughout all activities",
+        "Applied an algorithmic approach to mobility coaching by implementing continuous data tracking and iterative feedback loops to systematically scale client activity levels",
+        "Architected a procedural training methodology for assistive device operation, utilizing error-pattern analysis to identify and mitigate mechanical stumble risks while increasing user autonomy",
       ],
     },
     {
