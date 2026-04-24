@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 const WesternWebring = () => {
   useEffect(() => {
     const stylesheetId = "western-webring-styles";
+    const overridesId = "western-webring-overrides";
     const scriptId = "western-webring-script";
 
     if (!document.getElementById(stylesheetId)) {
@@ -11,6 +12,24 @@ const WesternWebring = () => {
       link.rel = "stylesheet";
       link.href = "https://jacobl04.github.io/Western-Webrings/webring.css";
       document.head.appendChild(link);
+    }
+
+    if (!document.getElementById(overridesId)) {
+      const style = document.createElement("style");
+      style.id = overridesId;
+      style.textContent = `
+        #western-webring .webring-widget { margin: 0.25rem 0 !important; }
+        #western-webring .webring-top-row { gap: 0.35rem !important; }
+        #western-webring .webring-bottom-row { gap: 0.5rem !important; }
+        #western-webring .webring-logo { height: 24px !important; }
+        #western-webring .webring-arrows,
+        #western-webring .webring-random,
+        #western-webring .webring-list {
+          font-size: 0.95rem !important;
+          line-height: 1.1 !important;
+        }
+      `;
+      document.head.appendChild(style);
     }
 
     if (document.getElementById(scriptId)) {
@@ -39,7 +58,7 @@ const WesternWebring = () => {
         <div
           id="western-webring"
           className="relative z-10 mx-auto flex w-full justify-center rounded-xl border border-primary/15 bg-background/70 p-4"
-          data-style="default"
+          data-style="minimal"
           data-color="blue"
           data-show-list="true"
           data-show-random="true"
