@@ -205,3 +205,61 @@ All colors MUST be HSL.
     transform: translateY(0);
   }
 }
+
+/* Marquee for news ticker */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 35s linear infinite;
+}
+
+/* ===== Western Webring widget restyle ===== */
+.webring-mount #western-webring {
+  display: flex !important;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: 'Inter', sans-serif !important;
+  color: hsl(var(--foreground)) !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.webring-mount #western-webring * {
+  font-family: 'Inter', sans-serif !important;
+}
+.webring-mount #western-webring a {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.5rem;
+  padding: 0.5rem 0.95rem !important;
+  border-radius: 0.6rem !important;
+  font-size: 0.8rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em;
+  text-decoration: none !important;
+  background: hsl(var(--card)) !important;
+  color: hsl(var(--foreground)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  box-shadow: 0 1px 2px hsl(var(--foreground) / 0.04);
+  transition: var(--transition-smooth);
+}
+.webring-mount #western-webring a:hover {
+  background: hsl(var(--primary)) !important;
+  color: hsl(var(--primary-foreground)) !important;
+  border-color: hsl(var(--primary)) !important;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-elegant);
+}
+.webring-mount #western-webring span,
+.webring-mount #western-webring p {
+  color: hsl(var(--muted-foreground)) !important;
+  font-size: 0.78rem !important;
+  font-weight: 500;
+  padding: 0 0.4rem;
+}
