@@ -13,7 +13,7 @@
     Full‑stack development · Machine Learning · Sabermetrics
   </p>
   <p>
-    <a href="https://jiwonlee.dev" target="_blank">🌐 Live Demo</a> • 
+    <a href="[https://jiwonlee.tech](https://www.jiwon.tech/)" target="_blank">🌐 Live Demo</a> • 
     <a href="#-features">✨ Features</a> • 
     <a href="#-tech-stack">🛠️ Tech Stack</a> • 
     <a href="#-local-development">💻 Local Dev</a>
