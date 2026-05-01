@@ -34,7 +34,7 @@
 A modern, interactive portfolio that showcases my journey as a **computer science student**, **full‑stack developer**, and **baseball analytics enthusiast**.  
 Built with a clean design, smooth animations, and a **baseball‑bat cursor** that swings on click – because why not? 😄
 
-**Live site:** [jiwonlee.dev](https://www.jiwonlee.tech) (deployed via Lovable / Vercel)
+**Live site:** [jiwon.tech](https://www.jiwon.tech/) (deployed via Lovable / Vercel)
 
 ---
 
