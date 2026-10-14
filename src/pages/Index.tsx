@@ -12,22 +12,22 @@ import BatCursor from "@/components/BatCursor";
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      <a
+        href="#about"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
+      >
+        Skip to content
+      </a>
       <Navigation />
       <Hero />
-      <section id="about">
+      <main>
         <About />
-      </section>
-      <SkillsSection />
-      <section id="projects">
-        <Projects />
-      </section>
-      <section id="experience">
         <Experience />
-      </section>
-      <section id="contact">
+        <Projects />
+        <SkillsSection />
+        <WesternWebring />
         <Contact />
-      </section>
-      <WesternWebring />
+      </main>
       <ScrollToTop />
       <BatCursor />
     </div>

@@ -12,11 +12,17 @@ const BatCursor = () => {
   });
   const [rotation, setRotation] = useState(0);
   const [isSwinging, setIsSwinging] = useState(false);
+  // Only show the bat for a real mouse, and only once it has moved
+  // (touch devices never fire hover-style pointer moves, so it would sit mid-screen).
+  const [hasFinePointer, setHasFinePointer] = useState(false);
+  const [isActive, setIsActive] = useState(false);
 
   const lastClientPos = useRef<Position>(curPosition);
   const lastUpdateTime = useRef<number>(0);
 
-  const updateTarget = useCallback((event: MouseEvent | PointerEvent) => {
+  const updateTarget = useCallback((event: PointerEvent) => {
+    if (event.pointerType !== "mouse") return;
+    setIsActive(true);
     const now = performance.now();
 
     // High-frequency updates for "locked" feel (approx 120fps)
@@ -49,18 +55,34 @@ const BatCursor = () => {
   }, []);
 
   useEffect(() => {
+    const query = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const sync = () => setHasFinePointer(query.matches);
+    sync();
+    query.addEventListener("change", sync);
+    return () => query.removeEventListener("change", sync);
+  }, []);
+
+  useEffect(() => {
+    if (!hasFinePointer) return;
+    const hide = () => setIsActive(false);
+
     // Note: Native cursor is NOT hidden here as per your request
     window.addEventListener("pointermove", updateTarget, { passive: true });
     window.addEventListener("mousedown", handleClick);
+    document.documentElement.addEventListener("mouseleave", hide);
 
     return () => {
       window.removeEventListener("pointermove", updateTarget);
       window.removeEventListener("mousedown", handleClick);
+      document.documentElement.removeEventListener("mouseleave", hide);
     };
-  }, [updateTarget, handleClick]);
+  }, [hasFinePointer, updateTarget, handleClick]);
+
+  if (!hasFinePointer || !isActive) return null;
 
   return (
     <div
+      aria-hidden="true"
       className="fixed pointer-events-none z-[9999] top-0 left-0 will-change-transform"
       style={{
         // Use translate3d for the smoothest possible hardware-accelerated movement
