@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Menu, X, Github, Linkedin, Mail } from "lucide-react";
 import { cn } from "@/lib/utils";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const navItems = [
   { name: "About", href: "#about" },
@@ -120,18 +121,23 @@ const Navigation = () => {
                 <Icon size={17} />
               </a>
             ))}
+            <span aria-hidden className="mx-1 h-5 w-px bg-border" />
+            <ThemeToggle />
           </div>
 
-          <button
-            type="button"
-            onClick={() => setIsOpen((open) => !open)}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full text-foreground transition-colors hover:bg-secondary hover:text-primary md:hidden"
-            aria-label={isOpen ? "Close menu" : "Open menu"}
-            aria-expanded={isOpen}
-            aria-controls="mobile-menu"
-          >
-            {isOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
+          <div className="flex items-center gap-1 md:hidden">
+            <ThemeToggle />
+            <button
+              type="button"
+              onClick={() => setIsOpen((open) => !open)}
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full text-foreground transition-colors hover:bg-secondary hover:text-primary"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isOpen}
+              aria-controls="mobile-menu"
+            >
+              {isOpen ? <X size={22} /> : <Menu size={22} />}
+            </button>
+          </div>
         </div>
 
         {isOpen && (

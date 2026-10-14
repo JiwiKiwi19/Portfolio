@@ -3,7 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#070a12" />
+    <meta name="theme-color" content="#f9f7f3" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#070a12" media="(prefers-color-scheme: dark)" />
+    <script>
+      // Apply the saved (or system) theme before first paint to avoid a flash.
+      // Must match next-themes' storageKey "theme" in src/App.tsx.
+      (function () {
+        try {
+          var stored = localStorage.getItem("theme");
+          var dark =
+            stored === "dark" ||
+            ((!stored || stored === "system") && window.matchMedia("(prefers-color-scheme: dark)").matches);
+          var root = document.documentElement;
+          root.classList.toggle("dark", dark);
+          root.style.colorScheme = dark ? "dark" : "light";
+        } catch (e) {}
+      })();
+    </script>
     <link rel="icon" type="image/x-icon" href="/batandball.png" />
     <link rel="apple-touch-icon" href="/batandball.png" />
     <title>Jiwon Lee · Software Engineering & ML</title>
