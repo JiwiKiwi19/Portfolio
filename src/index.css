@@ -7,8 +7,91 @@ All colors MUST be HSL.
 */
 
 @layer base {
+  /* ===== Day — Toronto in daylight: warm paper, deep navy ink, Toronto blue ===== */
   :root {
-    /* Toronto Night — midnight navy surfaces, electric-cyan primary, selective violet */
+    --background: 38 30% 97%;
+    --foreground: 224 45% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 224 45% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 45% 12%;
+
+    /* Deeper Toronto blue — the night cyan fails contrast on white */
+    --primary: 199 89% 36%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 214 32% 94%;
+    --secondary-foreground: 224 45% 12%;
+
+    --muted: 214 25% 92%;
+    --muted-foreground: 220 15% 38%;
+
+    --accent: 214 40% 92%;
+    --accent-foreground: 224 45% 12%;
+
+    --destructive: 0 72% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 216 22% 86%;
+    --input: 216 22% 80%;
+    --ring: 199 89% 36%;
+
+    --radius: 0.875rem;
+
+    --city-violet: 276 60% 48%;
+    --city-amber: 32 90% 45%;
+
+    /* Ambient page/hero light: warm sun + clear sky */
+    --glow-a: 38 95% 60%;
+    --glow-b: 199 89% 50%;
+
+    --shadow-elegant: 0 16px 40px -20px hsl(199 89% 36% / 0.35);
+    --shadow-card: 0 1px 2px hsl(224 40% 20% / 0.05), 0 14px 32px -20px hsl(224 40% 20% / 0.2);
+
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 224 45% 12%;
+    --sidebar-primary: 199 89% 36%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 214 40% 92%;
+    --sidebar-accent-foreground: 224 45% 12%;
+    --sidebar-border: 216 22% 86%;
+    --sidebar-ring: 199 89% 36%;
+
+    /* Skyline (components/TorontoSkyline.tsx) — full colors */
+    --sky-haze-mid: hsl(204 70% 86% / 0.7);
+    --sky-haze-end: hsl(204 65% 82%);
+    --sky-glow-1: hsl(40 95% 62% / 0.32);
+    --sky-glow-2: hsl(199 80% 60% / 0.1);
+    --sky-far: hsl(210 28% 80%);
+    --sky-near: hsl(213 28% 55%);
+    --sky-rim: hsl(0 0% 100% / 0.55);
+    --sky-tower-edge: hsl(210 12% 66%);
+    --sky-tower-mid: hsl(210 14% 84%);
+    --sky-pod: hsl(212 16% 62%);
+    --sky-mast: hsl(212 12% 55%);
+    --sky-pod-ring-opacity: 0.45;
+    --sky-dome: hsl(210 25% 92%);
+    --sky-dome-base: hsl(214 20% 58%);
+    --sky-dome-rib: hsl(214 30% 40% / 0.25);
+    --sky-stadium-opacity: 0;
+    --sky-win-warm: hsl(205 55% 86%);
+    --sky-win-cool: hsl(195 75% 90%);
+    --sky-win-opacity: 0.5;
+    --sky-lake-top: hsl(202 50% 66%);
+    --sky-lake-bottom: hsl(204 45% 86%);
+    --sky-reflect-opacity: 0.2;
+    --sky-wave: hsl(0 0% 100% / 0.55);
+    --sky-shore: hsl(204 40% 96% / 0.6);
+    --sky-shore-opacity: 0;
+  }
+
+  /* ===== Night — Toronto after dark (original theme) ===== */
+  .dark {
+    /* Midnight navy surfaces, electric-cyan primary, selective violet */
     --background: 226 45% 5%;
     --foreground: 210 40% 96%;
 
@@ -39,18 +122,16 @@ All colors MUST be HSL.
     --input: 222 28% 19%;
     --ring: 189 94% 56%;
 
-    --radius: 0.875rem;
-
     /* City-light accents, used sparingly */
     --city-violet: 288 80% 70%;
     --city-amber: 38 95% 64%;
 
+    --glow-a: 288 80% 70%;
+    --glow-b: 189 94% 56%;
+
     /* Shadows */
     --shadow-elegant: 0 18px 50px -20px hsl(189 94% 56% / 0.28);
     --shadow-card: 0 1px 0 hsl(0 0% 100% / 0.04) inset, 0 20px 40px -28px hsl(226 70% 2% / 0.9);
-
-    /* Animations */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     --sidebar-background: 225 38% 8%;
     --sidebar-foreground: 210 40% 96%;
@@ -60,6 +141,32 @@ All colors MUST be HSL.
     --sidebar-accent-foreground: 210 40% 98%;
     --sidebar-border: 222 28% 17%;
     --sidebar-ring: 189 94% 56%;
+
+    --sky-haze-mid: hsl(232 45% 14% / 0.9);
+    --sky-haze-end: hsl(240 40% 16%);
+    --sky-glow-1: hsl(288 75% 55% / 0.28);
+    --sky-glow-2: hsl(250 70% 45% / 0.08);
+    --sky-far: hsl(230 32% 12%);
+    --sky-near: hsl(226 42% 6.5%);
+    --sky-rim: hsl(189 94% 60% / 0.16);
+    --sky-tower-edge: hsl(226 35% 9.5%);
+    --sky-tower-mid: hsl(226 30% 16%);
+    --sky-pod: hsl(226 30% 15%);
+    --sky-mast: hsl(226 25% 22%);
+    --sky-pod-ring-opacity: 0.9;
+    --sky-dome: hsl(226 32% 13%);
+    --sky-dome-base: hsl(226 40% 8%);
+    --sky-dome-rib: hsl(189 94% 60% / 0.16);
+    --sky-stadium-opacity: 0.55;
+    --sky-win-warm: hsl(38 95% 66%);
+    --sky-win-cool: hsl(189 90% 70%);
+    --sky-win-opacity: 0.85;
+    --sky-lake-top: hsl(228 45% 9%);
+    --sky-lake-bottom: hsl(226 45% 5%);
+    --sky-reflect-opacity: 0.28;
+    --sky-wave: hsl(189 94% 70% / 0.08);
+    --sky-shore: hsl(38 95% 70%);
+    --sky-shore-opacity: 0.7;
   }
 }
 
@@ -69,16 +176,20 @@ All colors MUST be HSL.
   }
 
   html {
-    color-scheme: dark;
+    color-scheme: light;
     scroll-behavior: smooth;
     scroll-padding-top: 5rem;
+  }
+
+  html.dark {
+    color-scheme: dark;
   }
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
     background-image:
-      radial-gradient(80rem 40rem at 85% -10%, hsl(var(--primary) / 0.06), transparent 60%),
-      radial-gradient(60rem 40rem at 0% 40%, hsl(var(--city-violet) / 0.04), transparent 60%);
+      radial-gradient(80rem 40rem at 85% -10%, hsl(var(--glow-b) / 0.06), transparent 60%),
+      radial-gradient(60rem 40rem at 0% 40%, hsl(var(--glow-a) / 0.04), transparent 60%);
     background-attachment: fixed;
   }
 
@@ -149,8 +260,73 @@ All colors MUST be HSL.
   70% { opacity: 0.15; }
   75% { opacity: 0.9; }
 }
-.window-flicker {
+.dark .window-flicker {
   animation: window-flicker 9s steps(1, end) infinite;
+}
+
+/* ===== Theme switch =====
+   Added to <html> for ~0.5s by ThemeToggle so colors cross-fade instead of snapping.
+   Elements with their own motion (sun/moon) opt out via [data-theme-anim]. */
+.theme-transition,
+.theme-transition *:not([data-theme-anim]),
+.theme-transition *:not([data-theme-anim])::before,
+.theme-transition *:not([data-theme-anim])::after {
+  transition-property: background-color, border-color, color, fill, stroke, stop-color, box-shadow !important;
+  transition-duration: 0.45s !important;
+  transition-timing-function: ease !important;
+  transition-delay: 0s !important;
+}
+
+/* Spring curve shared by the sun/moon pieces */
+:root {
+  --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Hero sky: the sun sets / the moon rises */
+.sky-body {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition:
+    transform 0.9s var(--spring),
+    opacity 0.5s ease;
+}
+.sky-sun { opacity: 1; transform: translateY(0) scale(1); }
+.sky-moon { opacity: 0; transform: translateY(46px) scale(0.6); }
+.dark .sky-sun { opacity: 0; transform: translateY(46px) scale(0.6); }
+.dark .sky-moon { opacity: 1; transform: translateY(0) scale(1); }
+
+/* Toggle icon: sun ⇄ crescent moon morph */
+.theme-icon * {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition:
+    transform 0.55s var(--spring),
+    opacity 0.3s ease,
+    fill 0.4s ease;
+}
+.theme-icon .icon-core { transform: scale(0.62); fill: hsl(var(--city-amber)); }
+.theme-icon .icon-rays { transform: rotate(0deg) scale(1); opacity: 1; stroke: hsl(var(--city-amber)); }
+.theme-icon .icon-bite { transform: translate(9px, -9px); }
+.dark .theme-icon .icon-core { transform: scale(1); fill: hsl(48 90% 88%); }
+.dark .theme-icon .icon-rays { transform: rotate(-90deg) scale(0.3); opacity: 0; }
+.dark .theme-icon .icon-bite { transform: translate(0, 0); }
+
+@keyframes toggle-pop {
+  0% { transform: scale(1); }
+  35% { transform: scale(1.28) rotate(-8deg); }
+  65% { transform: scale(0.92) rotate(3deg); }
+  100% { transform: scale(1) rotate(0); }
+}
+.toggle-pop {
+  animation: toggle-pop 0.55s var(--spring);
+}
+
+@keyframes toggle-burst {
+  0% { transform: scale(0.4); opacity: 0.7; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+.toggle-burst {
+  animation: toggle-burst 0.6s ease-out forwards;
 }
 
 /* Marquee for news ticker */

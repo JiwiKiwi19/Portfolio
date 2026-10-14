@@ -17,7 +17,7 @@ const Hero = () => {
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(55rem 30rem at 72% 95%, hsl(var(--city-violet) / 0.14), transparent 65%), radial-gradient(45rem 28rem at 20% 85%, hsl(var(--primary) / 0.10), transparent 65%)",
+            "radial-gradient(55rem 30rem at 72% 95%, hsl(var(--glow-a) / 0.14), transparent 65%), radial-gradient(45rem 28rem at 20% 85%, hsl(var(--glow-b) / 0.10), transparent 65%)",
         }}
       />
 
@@ -91,7 +91,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <TorontoSkyline className="relative block h-[190px] w-full sm:h-[230px] lg:h-[270px]" />
+      <TorontoSkyline className="pointer-events-none relative block h-[190px] w-full overflow-visible sm:h-[230px] lg:h-[270px]" />
       <div
         aria-hidden
         className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-b from-transparent to-background"

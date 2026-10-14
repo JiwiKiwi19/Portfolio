@@ -209,7 +209,7 @@ const WesternWebring = () => {
                       <span
                         className={cn(
                           "shrink-0 rounded-md px-2 py-1 font-mono text-[10px] font-semibold uppercase tracking-wider",
-                          h.topic === "MLB" ? "bg-red-500/15 text-red-300" : "bg-city-violet/15 text-city-violet",
+                          h.topic === "MLB" ? "bg-red-500/10 text-red-700 dark:bg-red-500/15 dark:text-red-300" : "bg-city-violet/15 text-city-violet",
                         )}
                       >
                         {h.topic}
@@ -276,7 +276,7 @@ const WesternWebring = () => {
                   >
                     {[...headlines, ...headlines].map((h, i) => (
                       <span key={i} className="mx-6 inline-flex items-center gap-2">
-                        <span className={h.topic === "MLB" ? "text-red-400" : "text-city-violet"}>◆</span>
+                        <span className={h.topic === "MLB" ? "text-red-600 dark:text-red-400" : "text-city-violet"}>◆</span>
                         <span className="font-semibold text-foreground">{h.topic}</span>
                         <span className="max-w-[60ch] truncate">{h.title}</span>
                         <span className="text-muted-foreground/60">· {h.source}</span>
