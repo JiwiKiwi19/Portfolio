@@ -62,7 +62,11 @@ const otherRoles = [
 
 const Experience = () => {
   return (
-    <section id="experience" aria-labelledby="experience-title" className="relative px-4 py-24 sm:px-6 md:py-32">
+    <section
+      id="experience"
+      aria-labelledby="experience-title"
+      className="relative px-4 py-24 sm:px-6 md:py-32"
+    >
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           id="experience-title"
@@ -74,7 +78,12 @@ const Experience = () => {
 
         <ol className="relative space-y-6 before:absolute before:bottom-6 before:left-[5px] before:top-8 before:w-px before:bg-gradient-to-b before:from-city-violet/60 before:via-border before:to-transparent">
           {roles.map((role, index) => (
-            <Reveal as="li" key={role.company} delay={index * 100} className="relative pl-8 md:pl-12">
+            <Reveal
+              as="li"
+              key={role.company}
+              delay={index * 100}
+              className="relative pl-8 md:pl-12"
+            >
               <span
                 aria-hidden
                 className={cn(
@@ -87,10 +96,15 @@ const Experience = () => {
               <article className="glass-panel glass-panel-interactive rounded-2xl p-6 md:p-8">
                 <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
                   <div>
-                    <h3 className="font-display text-xl font-semibold text-foreground md:text-2xl">{role.title}</h3>
+                    <h3 className="font-display text-xl font-semibold text-foreground md:text-2xl">
+                      {role.title}
+                    </h3>
                     <p className="mt-1 text-base text-foreground/90">
                       {role.company}
-                      <span className="text-muted-foreground"> · {role.location}</span>
+                      <span className="text-muted-foreground">
+                        {" "}
+                        · {role.location}
+                      </span>
                     </p>
                   </div>
                   <div className="flex shrink-0 flex-wrap items-center gap-2">
@@ -99,21 +113,32 @@ const Experience = () => {
                         Current
                       </span>
                     )}
-                    <span className="font-mono text-sm text-muted-foreground">{role.period}</span>
+                    <span className="font-mono text-sm text-muted-foreground">
+                      {role.period}
+                    </span>
                   </div>
                 </div>
 
                 <ul className="mt-5 space-y-3">
                   {role.responsibilities.map((item) => (
-                    <li key={item} className="flex gap-3 leading-relaxed text-muted-foreground">
-                      <span aria-hidden className="mt-[0.6rem] h-1.5 w-1.5 shrink-0 rounded-full bg-primary/80" />
+                    <li
+                      key={item}
+                      className="flex gap-3 leading-relaxed text-muted-foreground"
+                    >
+                      <span
+                        aria-hidden
+                        className="mt-[0.6rem] h-1.5 w-1.5 shrink-0 rounded-full bg-primary/80"
+                      />
                       <span>{item}</span>
                     </li>
                   ))}
                 </ul>
 
                 <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
-                  <ul className="flex flex-wrap gap-2" aria-label="Technologies">
+                  <ul
+                    className="flex flex-wrap gap-2"
+                    aria-label="Technologies"
+                  >
                     {role.stack.map((tech) => (
                       <li key={tech} className="chip">
                         {tech}
@@ -146,15 +171,22 @@ const Experience = () => {
           </h3>
           <ul className="grid gap-4 md:grid-cols-2">
             {otherRoles.map((role) => (
-              <li key={role.title} className="rounded-2xl border border-border/80 p-5">
+              <li
+                key={role.title}
+                className="rounded-2xl border border-border/80 p-5"
+              >
                 <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                   <p className="font-medium text-foreground">{role.title}</p>
-                  <p className="font-mono text-xs text-muted-foreground">{role.period}</p>
+                  <p className="font-mono text-xs text-muted-foreground">
+                    {role.period}
+                  </p>
                 </div>
                 <p className="mt-0.5 text-sm text-muted-foreground">
                   {role.company} · {role.location}
                 </p>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{role.summary}</p>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  {role.summary}
+                </p>
               </li>
             ))}
           </ul>
