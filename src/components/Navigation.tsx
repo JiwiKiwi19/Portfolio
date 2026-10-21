@@ -67,21 +67,21 @@ const Navigation = () => {
       className={cn(
         "fixed inset-x-0 top-0 z-50 border-b transition-colors duration-300",
         scrolled || isOpen
-          ? "border-border/70 bg-background/80 backdrop-blur-md"
+          ? "border-border bg-background/95"
           : "border-transparent bg-transparent",
       )}
     >
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div className="flex h-16 items-center justify-between">
           <a
             href="#top"
-            className="font-display text-lg font-semibold tracking-tight text-foreground transition-colors hover:text-primary"
+            className="font-display text-2xl italic leading-none text-foreground transition-colors hover:text-primary"
           >
-            JL<span className="text-primary">.</span>
+            J. Lee<span className="not-italic text-primary">.</span>
             <span className="sr-only"> Back to top</span>
           </a>
 
-          <ul className="hidden items-center gap-1 md:flex">
+          <ul className="hidden items-center gap-0.5 md:flex">
             {navItems.map((item) => {
               const isActive = active === item.href.slice(1);
               return (
@@ -90,18 +90,16 @@ const Navigation = () => {
                     href={item.href}
                     aria-current={isActive ? "location" : undefined}
                     className={cn(
-                      "relative rounded-full px-3 py-2 text-sm transition-colors",
+                      "flex items-center gap-2 px-2.5 py-2 font-mono text-[11px] uppercase tracking-[0.14em] transition-colors",
                       isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground",
                     )}
                   >
-                    {item.name}
+                    {/* A window lights up for the section you're in */}
                     <span
                       aria-hidden
-                      className={cn(
-                        "absolute inset-x-3 -bottom-px h-px bg-primary transition-opacity duration-300",
-                        isActive ? "opacity-100" : "opacity-0",
-                      )}
+                      className={cn("lit transition-opacity duration-300", isActive ? "opacity-100" : "opacity-0")}
                     />
+                    {item.name}
                   </a>
                 </li>
               );
@@ -116,7 +114,7 @@ const Navigation = () => {
                 target={href.startsWith("http") ? "_blank" : undefined}
                 rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
                 aria-label={label}
-                className="inline-flex h-9 w-9 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-secondary hover:text-primary"
+                className="inline-flex h-9 w-9 items-center justify-center text-muted-foreground transition-colors hover:text-primary"
               >
                 <Icon size={17} />
               </a>
@@ -130,7 +128,7 @@ const Navigation = () => {
             <button
               type="button"
               onClick={() => setIsOpen((open) => !open)}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full text-foreground transition-colors hover:bg-secondary hover:text-primary"
+              className="inline-flex h-10 w-10 items-center justify-center text-foreground transition-colors hover:text-primary"
               aria-label={isOpen ? "Close menu" : "Open menu"}
               aria-expanded={isOpen}
               aria-controls="mobile-menu"
@@ -142,20 +140,21 @@ const Navigation = () => {
 
         {isOpen && (
           <div id="mobile-menu" className="animate-fade-in pb-5 md:hidden">
-            <ul className="space-y-1">
+            <ul className="border-t border-border">
               {navItems.map((item) => (
                 <li key={item.name}>
                   <a
                     href={item.href}
                     onClick={() => setIsOpen(false)}
-                    className="block rounded-lg px-3 py-2.5 text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+                    className="flex items-baseline justify-between border-b border-border py-3 font-display text-2xl text-foreground transition-colors hover:text-primary"
                   >
                     {item.name}
+                    <span className="slug">{item.href.slice(1)}</span>
                   </a>
                 </li>
               ))}
             </ul>
-            <div className="mt-3 flex gap-2 border-t border-border pt-4">
+            <div className="mt-3 flex gap-2">
               {socialLinks.map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}
@@ -163,7 +162,7 @@ const Navigation = () => {
                   target={href.startsWith("http") ? "_blank" : undefined}
                   rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
                   aria-label={label}
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-secondary hover:text-primary"
+                  className="inline-flex h-10 w-10 items-center justify-center text-muted-foreground transition-colors hover:text-primary"
                 >
                   <Icon size={20} />
                 </a>

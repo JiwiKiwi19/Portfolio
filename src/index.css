@@ -7,9 +7,9 @@ All colors MUST be HSL.
 */
 
 @layer base {
-  /* ===== Day — Toronto in daylight: warm paper, deep navy ink, Toronto blue ===== */
+  /* ===== Day — "Morning edition": Toronto in daylight. Warm newsprint, deep navy ink, Toronto blue ===== */
   :root {
-    --background: 38 30% 97%;
+    --background: 40 33% 96%;
     --foreground: 224 45% 12%;
 
     --card: 0 0% 100%;
@@ -38,10 +38,13 @@ All colors MUST be HSL.
     --input: 216 22% 80%;
     --ring: 199 89% 36%;
 
-    --radius: 0.875rem;
+    /* Editorial: crisp corners, hairline rules instead of rounded cards */
+    --radius: 0.25rem;
 
     --city-violet: 276 60% 48%;
     --city-amber: 32 90% 45%;
+    /* CN Tower aviation beacon — "live" indicators */
+    --city-beacon: 2 78% 50%;
 
     /* Ambient page/hero light: warm sun + clear sky */
     --glow-a: 38 95% 60%;
@@ -89,11 +92,11 @@ All colors MUST be HSL.
     --sky-shore-opacity: 0;
   }
 
-  /* ===== Night — Toronto after dark (original theme) ===== */
+  /* ===== Night — "Night edition": Toronto after dark ===== */
   .dark {
-    /* Midnight navy surfaces, electric-cyan primary, selective violet */
+    /* Midnight navy sky; sodium-vapour amber (street lights, lit windows) as the lead accent */
     --background: 226 45% 5%;
-    --foreground: 210 40% 96%;
+    --foreground: 40 30% 93%;
 
     --card: 225 38% 8%;
     --card-foreground: 210 40% 96%;
@@ -101,15 +104,15 @@ All colors MUST be HSL.
     --popover: 225 38% 9%;
     --popover-foreground: 210 40% 96%;
 
-    /* Electric cyan — CN Tower / Toronto-blue lighting */
-    --primary: 189 94% 56%;
+    /* Sodium amber — the same light as the skyline's windows */
+    --primary: 38 92% 62%;
     --primary-foreground: 226 50% 6%;
 
     --secondary: 225 30% 12%;
     --secondary-foreground: 210 40% 96%;
 
     --muted: 225 28% 13%;
-    --muted-foreground: 218 22% 72%;
+    --muted-foreground: 220 16% 68%;
 
     /* Kept subtle so shadcn hover/focus surfaces stay calm */
     --accent: 225 32% 16%;
@@ -118,34 +121,35 @@ All colors MUST be HSL.
     --destructive: 0 75% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 222 28% 17%;
-    --input: 222 28% 19%;
-    --ring: 189 94% 56%;
+    --border: 224 24% 18%;
+    --input: 224 24% 22%;
+    --ring: 38 92% 62%;
 
     /* City-light accents, used sparingly */
     --city-violet: 288 80% 70%;
     --city-amber: 38 95% 64%;
+    --city-beacon: 2 85% 62%;
 
-    --glow-a: 288 80% 70%;
+    --glow-a: 24 85% 55%;
     --glow-b: 189 94% 56%;
 
     /* Shadows */
-    --shadow-elegant: 0 18px 50px -20px hsl(189 94% 56% / 0.28);
+    --shadow-elegant: 0 18px 50px -20px hsl(38 92% 62% / 0.25);
     --shadow-card: 0 1px 0 hsl(0 0% 100% / 0.04) inset, 0 20px 40px -28px hsl(226 70% 2% / 0.9);
 
     --sidebar-background: 225 38% 8%;
     --sidebar-foreground: 210 40% 96%;
-    --sidebar-primary: 189 94% 56%;
+    --sidebar-primary: 38 92% 62%;
     --sidebar-primary-foreground: 226 50% 6%;
     --sidebar-accent: 225 32% 16%;
     --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 222 28% 17%;
-    --sidebar-ring: 189 94% 56%;
+    --sidebar-border: 224 24% 18%;
+    --sidebar-ring: 38 92% 62%;
 
     --sky-haze-mid: hsl(232 45% 14% / 0.9);
     --sky-haze-end: hsl(240 40% 16%);
-    --sky-glow-1: hsl(288 75% 55% / 0.28);
-    --sky-glow-2: hsl(250 70% 45% / 0.08);
+    --sky-glow-1: hsl(24 85% 48% / 0.26);
+    --sky-glow-2: hsl(222 60% 30% / 0.1);
     --sky-far: hsl(230 32% 12%);
     --sky-near: hsl(226 42% 6.5%);
     --sky-rim: hsl(189 94% 60% / 0.16);
@@ -187,10 +191,7 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    background-image:
-      radial-gradient(80rem 40rem at 85% -10%, hsl(var(--glow-b) / 0.06), transparent 60%),
-      radial-gradient(60rem 40rem at 0% 40%, hsl(var(--glow-a) / 0.04), transparent 60%);
-    background-attachment: fixed;
+    font-feature-settings: "ss01", "kern";
   }
 
   ::selection {
@@ -201,32 +202,30 @@ All colors MUST be HSL.
   :focus-visible {
     outline: 2px solid hsl(var(--ring));
     outline-offset: 3px;
-    border-radius: 6px;
+    border-radius: 2px;
   }
 }
 
 @layer components {
-  /* Restrained glass surface */
-  .glass-panel {
-    background: linear-gradient(180deg, hsl(var(--card) / 0.78), hsl(var(--card) / 0.55));
-    border: 1px solid hsl(var(--border));
-    box-shadow: var(--shadow-card);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+  /* Small-caps dateline / label text, like a newspaper slug */
+  .slug {
+    @apply font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-muted-foreground;
   }
 
-  .glass-panel-interactive {
-    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  /* A single lit window from the skyline — the site's marker for "current" / "active" */
+  .lit {
+    @apply inline-block h-[7px] w-[6px] shrink-0 bg-primary;
+    box-shadow: 0 0 10px hsl(var(--primary) / 0.55);
   }
 
-  .glass-panel-interactive:hover,
-  .glass-panel-interactive:focus-within {
-    border-color: hsl(var(--primary) / 0.35);
-    box-shadow: var(--shadow-card), var(--shadow-elegant);
+  /* Underlined text link in the editorial style */
+  .ink-link {
+    @apply underline decoration-foreground/25 decoration-1 underline-offset-[5px] transition-colors hover:text-primary hover:decoration-primary;
   }
 
-  .chip {
-    @apply inline-flex items-center rounded-md border border-border bg-secondary/60 px-2.5 py-1 font-mono text-[12.5px] leading-none text-foreground/85;
+  /* Plain-text technology list: "C# / ASP.NET / REST APIs" */
+  .stack-line {
+    @apply font-mono text-[12.5px] leading-relaxed text-muted-foreground;
   }
 
   /* Scroll reveal (see components/Reveal.tsx) */
@@ -362,9 +361,9 @@ All colors MUST be HSL.
   display: flex !important;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 0.5rem;
-  font-family: 'Inter', sans-serif !important;
+  font-family: 'Instrument Sans', sans-serif !important;
   color: hsl(var(--foreground)) !important;
   background: transparent !important;
   border: none !important;
@@ -372,7 +371,7 @@ All colors MUST be HSL.
   margin: 0 !important;
 }
 .webring-mount #western-webring * {
-  font-family: 'Inter', sans-serif !important;
+  font-family: 'Instrument Sans', sans-serif !important;
 }
 .webring-mount #western-webring a {
   display: inline-flex !important;
@@ -380,10 +379,11 @@ All colors MUST be HSL.
   justify-content: center;
   min-width: 2.5rem;
   padding: 0.5rem 0.95rem !important;
-  border-radius: 0.6rem !important;
-  font-size: 0.8rem !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.02em;
+  border-radius: 2px !important;
+  font-family: 'IBM Plex Mono', monospace !important;
+  font-size: 0.75rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.04em;
   text-decoration: none !important;
   background: hsl(var(--secondary)) !important;
   color: hsl(var(--foreground)) !important;
@@ -395,8 +395,6 @@ All colors MUST be HSL.
   background: hsl(var(--primary)) !important;
   color: hsl(var(--primary-foreground)) !important;
   border-color: hsl(var(--primary)) !important;
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-elegant);
 }
 .webring-mount #western-webring span,
 .webring-mount #western-webring p {
@@ -411,4 +409,38 @@ All colors MUST be HSL.
 html.bat-cursor-active,
 html.bat-cursor-active * {
   cursor: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=") 0 0, none !important;
+}
+
+/* Messages and logo the webring script renders into the mount */
+.webring-mount .webring-widget-error {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: hsl(var(--muted-foreground));
+}
+.webring-mount .webring-logo {
+  height: 2rem;
+  width: auto;
+}
+.webring-mount .webring-widget {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.webring-mount .webring-top-row,
+.webring-mount .webring-bottom-row {
+  display: flex;
+  align-items: stretch;
+  gap: 0.5rem;
+}
+.webring-mount .webring-top-row .webring-arrows,
+.webring-mount .webring-bottom-row a {
+  flex: 1 1 0;
+}
+/* The hub link wraps the Western geese logo; keep it unboxed */
+.webring-mount #western-webring a:has(.webring-logo) {
+  background: transparent !important;
+  border-color: transparent !important;
+  padding: 0 0.25rem !important;
 }

@@ -15,14 +15,15 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["Inter", "Helvetica Neue", "Arial", "sans-serif"],
-        display: ["'Space Grotesk'", "Inter", "sans-serif"],
-        mono: ["'JetBrains Mono'", "ui-monospace", "SFMono-Regular", "monospace"],
+        sans: ["'Instrument Sans'", "Helvetica Neue", "Arial", "sans-serif"],
+        display: ["'Instrument Serif'", "Georgia", "serif"],
+        mono: ["'IBM Plex Mono'", "ui-monospace", "SFMono-Regular", "monospace"],
       },
       colors: {
         city: {
           violet: "hsl(var(--city-violet))",
           amber: "hsl(var(--city-amber))",
+          beacon: "hsl(var(--city-beacon))",
         },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
