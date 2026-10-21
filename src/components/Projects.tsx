@@ -1,7 +1,6 @@
-import { ExternalLink, Github, Users } from "lucide-react";
+import { ArrowUpRight, ExternalLink, Github } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
-import { ArrowUpRight } from "lucide-react";
 
 type Project = {
   title: string;
@@ -120,17 +119,29 @@ const more: Project[] = [
   },
 ];
 
+const StackLine = ({ stack }: { stack: string[] }) => (
+  <ul className="stack-line flex flex-wrap" aria-label="Technologies">
+    {stack.map((tech, i) => (
+      <li key={tech}>
+        {tech}
+        {i < stack.length - 1 && <span aria-hidden className="px-2 text-border">/</span>}
+      </li>
+    ))}
+  </ul>
+);
+
 const ProjectLinks = ({ project }: { project: Project }) => (
-  <div className="flex flex-wrap items-center gap-4">
+  <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
     {project.githubUrl && (
       <a
         href={project.githubUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
+        className="inline-flex items-center gap-2 text-sm font-medium text-primary"
       >
-        <Github size={16} />
-        Code<span className="sr-only"> for {project.title}</span>
+        <Github size={15} />
+        <span className="ink-link">Code</span>
+        <span className="sr-only"> for {project.title}</span>
       </a>
     )}
     {project.liveUrl && (
@@ -138,10 +149,11 @@ const ProjectLinks = ({ project }: { project: Project }) => (
         href={project.liveUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
+        className="inline-flex items-center gap-2 text-sm font-medium text-primary"
       >
-        <ExternalLink size={16} />
-        Live demo<span className="sr-only"> of {project.title}</span>
+        <ExternalLink size={15} />
+        <span className="ink-link">Live demo</span>
+        <span className="sr-only"> of {project.title}</span>
       </a>
     )}
     {project.linkNote && (
@@ -150,100 +162,94 @@ const ProjectLinks = ({ project }: { project: Project }) => (
   </div>
 );
 
+// An index of work: big folio numbers in the gutter, serif titles, the key challenge as a pull quote.
 const Projects = () => {
   return (
     <section
       id="projects"
       aria-labelledby="projects-title"
-      className="relative px-4 py-24 sm:px-6 md:py-32"
+      className="relative px-4 py-16 sm:px-6 md:py-20"
     >
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-7xl">
         <SectionHeading
           id="projects-title"
           index="03"
           eyebrow="Projects"
-          title="Selected engineering work."
+          title={
+            <>
+              Selected <em>engineering</em> work.
+            </>
+          }
           description="Academic, team, and personal projects across GPU computing, machine learning, and full-stack development."
         />
 
-        <div className="grid gap-6 lg:grid-cols-2">
+        <ol className="border-b border-border">
           {featured.map((project, index) => (
             <Reveal
+              as="li"
               key={project.title}
-              delay={(index % 2) * 100}
-              className="h-full"
+              className="grid gap-6 border-t border-border py-12 md:grid-cols-12 md:gap-8 md:py-16"
             >
-              <article className="glass-panel glass-panel-interactive flex h-full flex-col rounded-2xl p-6 md:p-8">
-                <div className="flex flex-wrap items-center justify-between gap-3 font-mono text-xs text-muted-foreground">
-                  <span className="text-primary/80">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <div className="flex items-center gap-2">
-                    {project.team && (
-                      <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-secondary/70 px-2.5 py-1 text-[11px] uppercase tracking-wider text-foreground/85">
-                        <Users size={12} aria-hidden />
-                        Team project
-                      </span>
-                    )}
-                    {project.period && <span>{project.period}</span>}
-                  </div>
-                </div>
+              <p
+                aria-hidden
+                className="font-display text-[clamp(3.5rem,7vw,6.5rem)] leading-[0.8] text-primary md:col-span-3"
+              >
+                {String(index + 1).padStart(2, "0")}
+              </p>
 
-                <h3 className="mt-4 font-display text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
-                  {project.title}
-                </h3>
-                <p className="mt-2 text-muted-foreground">{project.tagline}</p>
+              <article className="md:col-span-9">
+                <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+                  <h3 className="font-display text-[clamp(2.5rem,5vw,4.25rem)] font-normal leading-[0.95] text-foreground">
+                    {project.title}
+                  </h3>
+                  <p className="slug flex items-center gap-3">
+                    {project.team && <span className="text-foreground/80">Team project</span>}
+                    {project.team && project.period && <span aria-hidden>·</span>}
+                    {project.period && <span>{project.period}</span>}
+                  </p>
+                </div>
+                <p className="mt-3 max-w-2xl text-lg text-muted-foreground md:text-xl">{project.tagline}</p>
 
                 {project.result && (
-                  <p className="mt-5 rounded-lg border border-primary/20 bg-primary/[0.06] px-3.5 py-2.5 font-mono text-[13px] text-primary">
+                  <p className="mt-5 inline-flex items-center gap-3 font-mono text-[13px] text-primary">
+                    <span className="lit" aria-hidden />
                     {project.result}
                   </p>
                 )}
 
-                <ul className="mt-5 space-y-2.5">
-                  {project.built.map((item) => (
-                    <li
-                      key={item}
-                      className="flex gap-3 text-[15px] leading-relaxed text-muted-foreground"
-                    >
-                      <span
-                        aria-hidden
-                        className="mt-[0.6rem] h-1.5 w-1.5 shrink-0 rounded-full bg-primary/70"
-                      />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <p className="mt-5 border-l-2 border-city-violet/60 pl-3 text-sm leading-relaxed text-foreground/85">
-                  <span className="font-mono text-[11px] uppercase tracking-wider text-city-violet">
-                    Key challenge
-                  </span>
-                  <br />
-                  {project.challenge}
-                </p>
-
-                <div className="mt-auto pt-6">
-                  <ul
-                    className="mb-5 flex flex-wrap gap-2"
-                    aria-label="Technologies"
-                  >
-                    {project.stack.map((tech) => (
-                      <li key={tech} className="chip">
-                        {tech}
+                <div className="mt-8 grid gap-8 lg:grid-cols-10">
+                  <ul className="space-y-3 lg:col-span-6">
+                    {project.built.map((item) => (
+                      <li
+                        key={item}
+                        className="flex gap-4 text-[15px] leading-relaxed text-muted-foreground"
+                      >
+                        <span aria-hidden className="mt-[0.7rem] h-px w-4 shrink-0 bg-primary" />
+                        <span>{item}</span>
                       </li>
                     ))}
                   </ul>
-                  <div className="flex flex-wrap items-center justify-between gap-4">
+
+                  <blockquote className="border-l border-foreground/60 pl-5 lg:col-span-4">
+                    <p className="slug mb-2">Key challenge</p>
+                    <p className="font-display text-2xl italic leading-snug text-foreground">
+                      {project.challenge}
+                    </p>
+                  </blockquote>
+                </div>
+
+                <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-dashed border-border pt-4">
+                  <StackLine stack={project.stack} />
+                  <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
                     <ProjectLinks project={project} />
                     {project.website && (
                       <a
                         href={project.website.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
+                        className="group inline-flex items-center gap-1.5 text-sm font-medium text-primary"
                       >
-                        Visit {project.website.label}
+                        <span className="ink-link">Visit {project.website.label}</span>
                         <ArrowUpRight
                           size={16}
                           className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
@@ -255,21 +261,21 @@ const Projects = () => {
               </article>
             </Reveal>
           ))}
-        </div>
+        </ol>
 
-        <Reveal className="mt-16">
-          <h3 className="mb-5 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+        <Reveal className="mt-16 grid gap-6 md:grid-cols-12 md:gap-8">
+          <h3 className="slug md:col-span-3">
             More projects
           </h3>
-          <ul className="divide-y divide-border/80 rounded-2xl border border-border/80">
+          <ul className="md:col-span-9">
             {more.map((project) => (
               <li
                 key={project.title}
-                className="grid gap-4 p-5 md:grid-cols-[1fr_auto] md:items-start md:p-6"
+                className="grid gap-4 border-t border-border py-6 last:border-b md:grid-cols-[1fr_auto] md:items-start"
               >
                 <div>
-                  <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                    <p className="font-display text-lg font-semibold text-foreground">
+                  <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+                    <p className="font-display text-3xl leading-tight text-foreground">
                       {project.title}
                     </p>
                     {project.period && (
@@ -278,19 +284,12 @@ const Projects = () => {
                       </span>
                     )}
                   </div>
-                  <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                  <p className="mt-2 max-w-3xl text-[15px] leading-relaxed text-muted-foreground">
                     {project.tagline}
                   </p>
-                  <ul
-                    className="mt-3 flex flex-wrap gap-2"
-                    aria-label="Technologies"
-                  >
-                    {project.stack.map((tech) => (
-                      <li key={tech} className="chip">
-                        {tech}
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="mt-3">
+                    <StackLine stack={project.stack} />
+                  </div>
                 </div>
                 <ProjectLinks project={project} />
               </li>

@@ -1,7 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
-import { cn } from "@/lib/utils";
 
 type Role = {
   title: string;
@@ -60,88 +59,70 @@ const otherRoles = [
   },
 ];
 
+// A ledger: dates in the left gutter, the role on the right, hairline rules between entries.
 const Experience = () => {
   return (
     <section
       id="experience"
       aria-labelledby="experience-title"
-      className="relative px-4 py-24 sm:px-6 md:py-32"
+      className="relative px-4 py-16 sm:px-6 md:py-20"
     >
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-7xl">
         <SectionHeading
           id="experience-title"
           index="02"
           eyebrow="Experience"
-          title="Professional experience."
+          title={
+            <>
+              Professional <em>experience.</em>
+            </>
+          }
           description="Industry software roles. Academic, team, and personal projects are listed separately below."
         />
 
-        <ol className="relative space-y-6 before:absolute before:bottom-6 before:left-[5px] before:top-8 before:w-px before:bg-gradient-to-b before:from-city-violet/60 before:via-border before:to-transparent">
+        <ol className="border-b border-border">
           {roles.map((role, index) => (
             <Reveal
               as="li"
               key={role.company}
               delay={index * 100}
-              className="relative pl-8 md:pl-12"
+              className="grid gap-4 border-t border-border py-10 md:grid-cols-12 md:gap-8 md:py-12"
             >
-              <span
-                aria-hidden
-                className={cn(
-                  "absolute left-0 top-8 h-[11px] w-[11px] rounded-full border-2",
-                  role.current
-                    ? "border-city-violet bg-city-violet shadow-[0_0_14px_hsl(var(--city-violet)/0.7)]"
-                    : "border-primary/70 bg-background",
+              <div className="md:col-span-3">
+                <p className="font-mono text-sm text-foreground/85">{role.period}</p>
+                <p className="mt-1 text-sm text-muted-foreground">{role.location}</p>
+                {role.current && (
+                  <p className="slug mt-4 flex items-center gap-2.5 text-primary">
+                    <span className="lit" aria-hidden />
+                    Current
+                  </p>
                 )}
-              />
-              <article className="glass-panel glass-panel-interactive rounded-2xl p-6 md:p-8">
-                <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
-                  <div>
-                    <h3 className="font-display text-xl font-semibold text-foreground md:text-2xl">
-                      {role.title}
-                    </h3>
-                    <p className="mt-1 text-base text-foreground/90">
-                      {role.company}
-                      <span className="text-muted-foreground">
-                        {" "}
-                        · {role.location}
-                      </span>
-                    </p>
-                  </div>
-                  <div className="flex shrink-0 flex-wrap items-center gap-2">
-                    {role.current && (
-                      <span className="rounded-full border border-city-violet/40 bg-city-violet/10 px-2.5 py-1 font-mono text-[11px] uppercase tracking-wider text-city-violet">
-                        Current
-                      </span>
-                    )}
-                    <span className="font-mono text-sm text-muted-foreground">
-                      {role.period}
-                    </span>
-                  </div>
-                </div>
+              </div>
 
-                <ul className="mt-5 space-y-3">
+              <article className="md:col-span-9">
+                <h3 className="font-display text-[clamp(2rem,3.6vw,3rem)] font-normal leading-[1] text-foreground">
+                  {role.title}
+                </h3>
+                <p className="mt-2 text-lg text-foreground/90">{role.company}</p>
+
+                <ul className="mt-6 max-w-3xl space-y-3">
                   {role.responsibilities.map((item) => (
                     <li
                       key={item}
-                      className="flex gap-3 leading-relaxed text-muted-foreground"
+                      className="flex gap-4 leading-relaxed text-muted-foreground"
                     >
-                      <span
-                        aria-hidden
-                        className="mt-[0.6rem] h-1.5 w-1.5 shrink-0 rounded-full bg-primary/80"
-                      />
+                      <span aria-hidden className="mt-[0.7rem] h-px w-4 shrink-0 bg-primary" />
                       <span>{item}</span>
                     </li>
                   ))}
                 </ul>
 
-                <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
-                  <ul
-                    className="flex flex-wrap gap-2"
-                    aria-label="Technologies"
-                  >
-                    {role.stack.map((tech) => (
-                      <li key={tech} className="chip">
+                <div className="mt-6 flex flex-wrap items-baseline justify-between gap-4">
+                  <ul className="stack-line flex flex-wrap" aria-label="Technologies">
+                    {role.stack.map((tech, i) => (
+                      <li key={tech}>
                         {tech}
+                        {i < role.stack.length - 1 && <span aria-hidden className="px-2 text-border">/</span>}
                       </li>
                     ))}
                   </ul>
@@ -150,9 +131,9 @@ const Experience = () => {
                       href={role.website.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
+                      className="group inline-flex items-center gap-1.5 text-sm font-medium text-primary"
                     >
-                      Visit {role.website.label}
+                      <span className="ink-link">Visit {role.website.label}</span>
                       <ArrowUpRight
                         size={16}
                         className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
@@ -165,24 +146,19 @@ const Experience = () => {
           ))}
         </ol>
 
-        <Reveal className="mt-16">
-          <h3 className="mb-5 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+        <Reveal className="mt-16 grid gap-6 md:grid-cols-12 md:gap-8">
+          <h3 className="slug md:col-span-3">
             Other experience
           </h3>
-          <ul className="grid gap-4 md:grid-cols-2">
+          <ul className="grid gap-x-8 gap-y-8 sm:grid-cols-2 md:col-span-9">
             {otherRoles.map((role) => (
-              <li
-                key={role.title}
-                className="rounded-2xl border border-border/80 p-5"
-              >
-                <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                  <p className="font-medium text-foreground">{role.title}</p>
-                  <p className="font-mono text-xs text-muted-foreground">
-                    {role.period}
-                  </p>
-                </div>
-                <p className="mt-0.5 text-sm text-muted-foreground">
+              <li key={role.title} className="border-t border-border pt-4">
+                <p className="font-display text-2xl leading-tight text-foreground">{role.title}</p>
+                <p className="mt-1 text-sm text-muted-foreground">
                   {role.company} · {role.location}
+                </p>
+                <p className="mt-0.5 font-mono text-xs text-muted-foreground">
+                  {role.period}
                 </p>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                   {role.summary}

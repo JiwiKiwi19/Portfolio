@@ -27,7 +27,7 @@ const ScrollToTop = () => {
         <button
           type="button"
           onClick={scrollToTop}
-          className="glass-panel fixed bottom-6 right-6 z-50 inline-flex h-11 w-11 items-center justify-center rounded-full text-primary transition-colors hover:border-primary/50 hover:bg-primary hover:text-primary-foreground"
+          className="fixed bottom-6 right-6 z-50 inline-flex h-11 w-11 items-center justify-center border border-foreground/70 bg-background text-foreground transition-colors hover:border-primary hover:bg-primary hover:text-primary-foreground"
           aria-label="Scroll to top"
         >
           <ArrowUp size={20} />
