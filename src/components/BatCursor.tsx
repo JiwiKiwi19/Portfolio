@@ -141,10 +141,6 @@ const BatCursor = () => {
       </div>
 
       <style>{`
-        html.bat-cursor-active,
-        html.bat-cursor-active * {
-          cursor: none !important;
-        }
         @keyframes bat-swing {
           0%   { transform: rotate(0deg); }
           30%  { transform: rotate(-30deg) scale(1.1); }
