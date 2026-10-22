@@ -25,3 +25,6 @@ dist-ssr
 
 # Chat function secrets (Gemini key)
 supabase/functions/chat/.env
+
+# Supabase CLI local state
+supabase/.temp/

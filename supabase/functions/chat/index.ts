@@ -7,7 +7,7 @@
 //   { t: "card", id, card }                weather / news / GitHub data rendered by the UI
 //   { t: "done" } | { t: "error", code, message }
 //
-// Secrets: CHAT_API_KEY (required), CHAT_BASE_URL, CHAT_MODEL, ALLOWED_ORIGINS, GITHUB_TOKEN (optional).
+// Secrets: CHAT_API_KEY (required), CHAT_BASE_URL, CHAT_MODEL, CHAT_FALLBACK_MODEL, ALLOWED_ORIGINS, GITHUB_TOKEN (optional).
 // Conversations are not stored or logged; the browser sends the visible history on each turn.
 //
 // Talks to any OpenAI-compatible chat completions API. The default is Google Gemini's free tier;
@@ -17,8 +17,11 @@ import { buildSystemPrompt, VOICE_MODE_NOTE } from "./profile.ts";
 import { TOOLS, ToolError, type ToolName } from "./tools.ts";
 
 const BASE_URL = (Deno.env.get("CHAT_BASE_URL") || "https://generativelanguage.googleapis.com/v1beta/openai").replace(/\/+$/, "");
-// Google's alias for its newest Flash model, so the default doesn't go stale when a version is retired.
-const MODEL = Deno.env.get("CHAT_MODEL") || "gemini-flash-latest";
+// A pinned model: the newest Flash (gemini-flash-latest) is often overloaded on the free tier.
+// Google retires old versions, so if this one starts returning 404, set CHAT_MODEL to a newer Flash.
+const MODEL = Deno.env.get("CHAT_MODEL") || "gemini-3.5-flash";
+// Tried when the main model is overloaded (503) or out of free-tier quota (429); each model has its own quota.
+const FALLBACK_MODEL = Deno.env.get("CHAT_FALLBACK_MODEL") || "gemini-flash-lite-latest";
 // Conversational replies don't need deep reasoning; low effort keeps answers quick.
 const REASONING_EFFORT = "low";
 // A hard cap for a public endpoint: generous for chat answers, bounded for cost.
@@ -267,21 +270,27 @@ async function runConversation(
 
   for (let round = 0; round < MAX_TOOL_ROUNDS + 1; round++) {
     const lastRound = round === MAX_TOOL_ROUNDS;
-    const res = await fetch(`${BASE_URL}/chat/completions`, {
-      method: "POST",
-      headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
-      body: JSON.stringify({
-        model: MODEL,
-        max_tokens: MAX_TOKENS,
-        reasoning_effort: REASONING_EFFORT,
-        stream: true,
-        tools: toolDefinitions,
-        // Out of tool rounds: let the model answer with what it has.
-        tool_choice: lastRound ? "none" : "auto",
-        messages,
-      }),
-      signal,
-    });
+    const request = (model: string) =>
+      fetch(`${BASE_URL}/chat/completions`, {
+        method: "POST",
+        headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
+        body: JSON.stringify({
+          model,
+          max_tokens: MAX_TOKENS,
+          reasoning_effort: REASONING_EFFORT,
+          stream: true,
+          tools: toolDefinitions,
+          // Out of tool rounds: let the model answer with what it has.
+          tool_choice: lastRound ? "none" : "auto",
+          messages,
+        }),
+        signal,
+      });
+    let res = await request(MODEL);
+    if ((res.status === 429 || res.status === 503) && FALLBACK_MODEL && FALLBACK_MODEL !== MODEL) {
+      await res.body?.cancel();
+      res = await request(FALLBACK_MODEL);
+    }
     if (!res.ok || !res.body) throw new ProviderError(res.status, await res.text().catch(() => ""));
 
     let text = "";
