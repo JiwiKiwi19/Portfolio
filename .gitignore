@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Chat function secrets (Gemini key)
+supabase/functions/chat/.env
