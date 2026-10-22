@@ -11,6 +11,7 @@ const socialLinks = [
 const jumpLinks = [
   { label: "Selected work", href: "#projects", external: false },
   { label: "Experience", href: "#experience", external: false },
+  { label: "Ask my AI", href: "#ask", external: false },
   { label: "Résumé (PDF)", href: "/resume.pdf", external: true },
 ];
 

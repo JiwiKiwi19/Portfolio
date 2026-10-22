@@ -27,7 +27,7 @@ const Contact = () => {
         <div className="mx-auto max-w-7xl">
           <SectionHeading
             id="contact-title"
-            index="06"
+            index="07"
             eyebrow="Contact"
             title={
               <>

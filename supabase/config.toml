@@ -1,1 +1,4 @@
 project_id = "linoaucqqlxtfftwzfua"
+[functions.chat]
+# Public endpoint: the site calls it without a Supabase key. Abuse limits live in the function.
+verify_jwt = false

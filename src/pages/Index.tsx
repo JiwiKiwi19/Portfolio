@@ -8,6 +8,7 @@ import Contact from "@/components/Contact";
 import ScrollToTop from "@/components/ScrollToTop";
 import WesternWebring from "@/components/WesternWebring";
 import BatCursor from "@/components/BatCursor";
+import AskSection from "@/components/chat/AskSection";
 
 const Index = () => {
   return (
@@ -26,6 +27,7 @@ const Index = () => {
         <Projects />
         <SkillsSection />
         <WesternWebring />
+        <AskSection />
         <Contact />
       </main>
       <ScrollToTop />
