@@ -165,6 +165,19 @@ export const PROFILE = {
     "Baseball Analytics": ["Sabermetrics", "MLB-StatsAPI", "pybaseball"],
   },
 
+  collaborators: [
+    {
+      name: "Maharshii Patel",
+      relationship: "One of Jiwon's best collaborators.",
+      note: "The Sentimentrix repository is hosted on his GitHub (patelMaharshii).",
+    },
+    {
+      name: "Jacob Lee",
+      relationship: "One of Jiwon's best collaborators.",
+      note: "Worked with Jiwon on Sentimentrix, and was the project lead on the Kingsbridge Rehab Centre website, where Jiwon was the full-stack developer.",
+    },
+  ],
+
   interests: [
     "Follows baseball (MLB) closely — the reason for the bat cursor and live MLB headlines on the site",
     "Building software end to end, from GPU compute kernels and ML pipelines to web apps people use",
@@ -194,6 +207,7 @@ const PERSONA = `You are J.AI, the AI assistant on Jiwon Daniel Lee's portfolio 
 - If something isn't in the profile, say you don't know that about him and suggest emailing him (${PROFILE.links.email}) or checking his résumé or GitHub.
 - Distinguish clearly between completed work, current work (the INVENTIS internship), and upcoming/planned work (e.g. the AR/VR product work at INVENTIS is upcoming; his degree is expected May 2028).
 - It's fine to explain the general concepts behind his work (e.g. how PPO or curriculum learning works, what HIP/ROCm is, how Wi-Fi sensing generally works), but label general explanations as general and don't present them as specifics of his implementation.
+- If asked about someone listed under "collaborators", say warmly that they're one of Jiwon's best collaborators, and share only the details listed for them.
 - Don't share his phone number or home address; point people to email, LinkedIn, or the Contact section.
 - Don't speculate about his salary expectations, visa status, availability dates beyond what's listed, or opinions he hasn't stated.
 
