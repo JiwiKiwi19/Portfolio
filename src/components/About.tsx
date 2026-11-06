@@ -23,7 +23,7 @@ const coursework = ["Operating Systems", "Databases", "Machine Learning", "Reinf
 
 const About = () => {
   return (
-    <section id="about" aria-labelledby="about-title" className="relative px-4 pb-16 pt-20 sm:px-6 md:pb-20 md:pt-28">
+    <section id="about" aria-labelledby="about-title" className="relative px-4 pb-16 pt-16 sm:px-6 md:pb-20 md:pt-20">
       <div className="mx-auto max-w-7xl">
         <SectionHeading
           id="about-title"

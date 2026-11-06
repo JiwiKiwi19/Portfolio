@@ -8,7 +8,6 @@ const navItems = [
   { name: "Experience", href: "#experience" },
   { name: "Projects", href: "#projects" },
   { name: "Skills", href: "#skills" },
-  { name: "Live Wire", href: "#live" },
   { name: "Ask AI", href: "#ask" },
   { name: "Contact", href: "#contact" },
 ];
@@ -21,32 +20,21 @@ const socialLinks = [
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("");
 
-  // Solid background once the page leaves the hero; clear the active link at the top.
   useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > 24);
-      if (window.scrollY < 200) setActive("");
-    };
-    onScroll();
+    if (window.scrollY < 200) setActive("");
+    const onScroll = () => { if (window.scrollY < 200) setActive(""); };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Highlight the section currently in the middle of the viewport.
   useEffect(() => {
     const sections = navItems
       .map((item) => document.getElementById(item.href.slice(1)))
       .filter((el): el is HTMLElement => el !== null);
-
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setActive(entry.target.id);
-        });
-      },
+      (entries) => { entries.forEach((entry) => { if (entry.isIntersecting) setActive(entry.target.id); }); },
       { rootMargin: "-45% 0px -50% 0px" },
     );
     sections.forEach((section) => observer.observe(section));
@@ -55,9 +43,7 @@ const Navigation = () => {
 
   useEffect(() => {
     if (!isOpen) return;
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setIsOpen(false);
-    };
+    const onKey = (event: KeyboardEvent) => { if (event.key === "Escape") setIsOpen(false); };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [isOpen]);
@@ -65,21 +51,18 @@ const Navigation = () => {
   return (
     <nav
       aria-label="Primary"
-      className={cn(
-        "fixed inset-x-0 top-0 z-50 border-b transition-colors duration-300",
-        scrolled || isOpen
-          ? "border-border bg-background/95"
-          : "border-transparent bg-transparent",
-      )}
+      className="fixed inset-x-0 top-0 z-50 border-b border-white/[0.07]"
+      style={{ background: '#142e1e' }}
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="flex h-16 items-center justify-between">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="flex h-[52px] items-center justify-between">
           <a
             href="#top"
-            className="font-display text-2xl italic leading-none text-foreground transition-colors hover:text-primary"
+            className="font-display text-[17px] font-bold italic leading-none transition-opacity hover:opacity-70"
+            style={{ color: '#f2ece0' }}
           >
-            J. Lee<span className="not-italic text-primary">.</span>
-            <span className="sr-only"> Back to top</span>
+            Jiwon Lee
+            <span className="sr-only"> — back to top</span>
           </a>
 
           <ul className="hidden items-center gap-0.5 md:flex">
@@ -91,20 +74,28 @@ const Navigation = () => {
                     href={item.href}
                     aria-current={isActive ? "location" : undefined}
                     className={cn(
-                      "flex items-center gap-2 px-2.5 py-2 font-mono text-[11px] uppercase tracking-[0.14em] transition-colors",
-                      isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground",
+                      "px-3 py-2 font-sans text-[11px] font-medium uppercase tracking-[0.08em] transition-colors",
+                      isActive
+                        ? "text-[#f2ece0]"
+                        : "text-[rgba(242,236,224,0.42)] hover:text-[rgba(242,236,224,0.8)]",
                     )}
                   >
-                    {/* A window lights up for the section you're in */}
-                    <span
-                      aria-hidden
-                      className={cn("lit transition-opacity duration-300", isActive ? "opacity-100" : "opacity-0")}
-                    />
                     {item.name}
                   </a>
                 </li>
               );
             })}
+            <li>
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ml-2 inline-flex items-center px-4 py-1.5 font-sans text-[11px] font-bold uppercase tracking-[0.07em] transition-opacity hover:opacity-80"
+                style={{ background: '#c47a0a', color: '#142e1e', borderRadius: '2px' }}
+              >
+                Résumé ↗
+              </a>
+            </li>
           </ul>
 
           <div className="hidden items-center gap-1 md:flex">
@@ -115,21 +106,23 @@ const Navigation = () => {
                 target={href.startsWith("http") ? "_blank" : undefined}
                 rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
                 aria-label={label}
-                className="inline-flex h-9 w-9 items-center justify-center text-muted-foreground transition-colors hover:text-primary"
+                className="inline-flex h-9 w-9 items-center justify-center transition-opacity hover:opacity-70"
+                style={{ color: 'rgba(242,236,224,0.5)' }}
               >
-                <Icon size={17} />
+                <Icon size={16} />
               </a>
             ))}
-            <span aria-hidden className="mx-1 h-5 w-px bg-border" />
+            <span aria-hidden className="mx-1 h-4 w-px" style={{ background: 'rgba(242,236,224,0.12)' }} />
             <ThemeToggle />
           </div>
 
-          <div className="flex items-center gap-1 md:hidden">
+          <div className="flex items-center gap-2 md:hidden">
             <ThemeToggle />
             <button
               type="button"
               onClick={() => setIsOpen((open) => !open)}
-              className="inline-flex h-10 w-10 items-center justify-center text-foreground transition-colors hover:text-primary"
+              className="inline-flex h-10 w-10 items-center justify-center transition-opacity hover:opacity-70"
+              style={{ color: '#f2ece0' }}
               aria-label={isOpen ? "Close menu" : "Open menu"}
               aria-expanded={isOpen}
               aria-controls="mobile-menu"
@@ -140,22 +133,25 @@ const Navigation = () => {
         </div>
 
         {isOpen && (
-          <div id="mobile-menu" className="animate-fade-in pb-5 md:hidden">
-            <ul className="border-t border-border">
+          <div id="mobile-menu" className="animate-fade-in pb-6 md:hidden" style={{ borderTop: '1px solid rgba(242,236,224,0.1)' }}>
+            <ul>
               {navItems.map((item) => (
                 <li key={item.name}>
                   <a
                     href={item.href}
                     onClick={() => setIsOpen(false)}
-                    className="flex items-baseline justify-between border-b border-border py-3 font-display text-2xl text-foreground transition-colors hover:text-primary"
+                    className="flex items-baseline justify-between py-3 font-display text-2xl font-bold italic transition-opacity hover:opacity-70"
+                    style={{ color: '#f2ece0', borderBottom: '1px solid rgba(242,236,224,0.08)' }}
                   >
                     {item.name}
-                    <span className="slug">{item.href.slice(1)}</span>
+                    <span className="font-sans text-[11px] not-italic" style={{ color: 'rgba(242,236,224,0.35)' }}>
+                      {item.href.slice(1)}
+                    </span>
                   </a>
                 </li>
               ))}
             </ul>
-            <div className="mt-3 flex gap-2">
+            <div className="mt-4 flex gap-2">
               {socialLinks.map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}
@@ -163,7 +159,8 @@ const Navigation = () => {
                   target={href.startsWith("http") ? "_blank" : undefined}
                   rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
                   aria-label={label}
-                  className="inline-flex h-10 w-10 items-center justify-center text-muted-foreground transition-colors hover:text-primary"
+                  className="inline-flex h-10 w-10 items-center justify-center transition-opacity hover:opacity-70"
+                  style={{ color: 'rgba(242,236,224,0.5)' }}
                 >
                   <Icon size={20} />
                 </a>

@@ -1,120 +1,209 @@
-import { ArrowDownRight, ArrowUpRight } from "lucide-react";
-import TorontoSkyline from "@/components/TorontoSkyline";
 import LiveClock from "@/components/LiveClock";
 
-const socialLinks = [
-  { label: "GitHub", href: "https://github.com/JiwiKiwi19" },
-  { label: "LinkedIn", href: "https://linkedin.com/in/jiwon-lee-7614362ab" },
-  { label: "Email", href: "mailto:ousfame5@gmail.com" },
-];
-
-const jumpLinks = [
-  { label: "Selected work", href: "#projects", external: false },
-  { label: "Experience", href: "#experience", external: false },
-  { label: "Ask my AI", href: "#ask", external: false },
-  { label: "Résumé (PDF)", href: "/resume.pdf", external: true },
-];
-
-// The front page: a dateline, the name set like a masthead, and the skyline as the cover plate.
 const Hero = () => {
   return (
-    <header id="top" className="relative flex min-h-[100svh] flex-col overflow-hidden">
-      <div className="relative z-10 flex-1 px-4 pt-24 sm:px-6 md:pt-28">
-        <div className="mx-auto w-full max-w-7xl">
-        {/* Dateline */}
-        <div className="slug flex flex-wrap items-center justify-between gap-x-6 gap-y-2 border-y border-foreground/70 py-2.5 animate-fade-in">
-          <span>Toronto, Ontario · 43.65° N 79.38° W</span>
-          <span className="flex items-center gap-3">
-            <span className="dark:hidden">Morning edition</span>
-            <span className="hidden dark:inline">Night edition</span>
-            <span aria-hidden className="h-3 w-px bg-border" />
-            <span className="text-foreground/80">
-              TOR <LiveClock seconds={false} />
-            </span>
+    <header
+      id="top"
+      className="relative overflow-hidden"
+      style={{
+        background: '#1b3a28',
+        paddingTop: '52px',
+        minHeight: '100svh',
+        display: 'grid',
+        gridTemplateColumns: 'clamp(240px,28vw,360px) 1fr',
+      }}
+    >
+      {/* Subtle horizontal texture lines */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage: 'repeating-linear-gradient(0deg,transparent,transparent 44px,rgba(242,236,224,.022) 44px,rgba(242,236,224,.022) 45px)',
+          zIndex: 0,
+        }}
+      />
+
+      {/* LEFT: portrait */}
+      <div className="relative flex flex-col" style={{ zIndex: 1 }}>
+        <div
+          className="portrait-frame"
+          style={{ margin: '36px 0 36px 44px', flex: 1 }}
+        >
+          {/* Stars */}
+          <span
+            aria-hidden
+            className="absolute text-[18px] select-none"
+            style={{ top: 20, left: 20, color: 'rgba(242,236,224,.45)', zIndex: 4 }}
+          >
+            ✦
           </span>
-        </div>
+          <span
+            aria-hidden
+            className="absolute text-[18px] select-none"
+            style={{ bottom: 72, left: 16, color: 'rgba(242,236,224,.45)', zIndex: 4 }}
+          >
+            ✦
+          </span>
+          <span
+            aria-hidden
+            className="absolute text-[18px] select-none"
+            style={{ top: 16, right: 16, color: 'rgba(242,236,224,.45)', zIndex: 4 }}
+          >
+            ✦
+          </span>
 
-        <div className="grid gap-10 pb-10 pt-10 md:grid-cols-12 md:gap-8 md:pt-14">
-          <h1 className="font-display font-normal leading-[0.8] tracking-[-0.02em] text-foreground md:col-span-8 animate-fade-in">
-            <span className="block text-[clamp(5.5rem,24vw,8rem)] md:text-[clamp(5rem,15vw,13.5rem)]">Jiwon</span>
-            <span className="block pl-[0.9em] text-[clamp(5.5rem,24vw,8rem)] italic md:pl-[1.4em] md:text-[clamp(5rem,15vw,13.5rem)]">
-              Lee<span className="not-italic text-primary">.</span>
-            </span>
-          </h1>
+          <img
+            src="/portrait.jpg"
+            alt="Jiwon Lee"
+            className="absolute inset-0 h-full w-full object-cover"
+            style={{ objectPosition: 'center top' }}
+          />
 
-          <div className="flex flex-col justify-end gap-8 md:col-span-4 md:pb-3">
-            <div>
-              <p className="slug mb-3 flex items-center gap-2.5">
-                <span className="lit" aria-hidden />
-                Currently
-              </p>
-              <p className="text-lg leading-snug text-foreground">
-                Software Engineering Intern at INVENTIS Korea, Seoul.
-              </p>
-            </div>
-
-            <p className="text-base leading-relaxed text-muted-foreground">
-              Computer Science student at Western University. I build full-stack web apps,
-              GPU-accelerated simulations, and machine learning pipelines, and I'm currently
-              working in a C#/ASP.NET codebase in Seoul.
-            </p>
-
-            <ul className="border-t border-border">
-              {jumpLinks.map(({ label, href, external }) => (
-                <li key={label} className="border-b border-border">
-                  <a
-                    href={href}
-                    target={external ? "_blank" : undefined}
-                    rel={external ? "noopener noreferrer" : undefined}
-                    className="group flex items-center justify-between py-3 text-[15px] font-medium text-foreground transition-colors hover:text-primary"
-                  >
-                    {label}
-                    {external ? (
-                      <ArrowUpRight size={17} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                    ) : (
-                      <ArrowDownRight size={17} className="transition-transform group-hover:translate-x-0.5 group-hover:translate-y-0.5" />
-                    )}
-                  </a>
-                </li>
-              ))}
-            </ul>
-
-            <ul className="slug flex flex-wrap gap-x-5 gap-y-2">
-              {socialLinks.map(({ label, href }) => (
-                <li key={label}>
-                  <a
-                    href={href}
-                    target={href.startsWith("http") ? "_blank" : undefined}
-                    rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                    className="text-foreground/80 transition-colors hover:text-primary"
-                  >
-                    {label}
-                  </a>
-                </li>
-              ))}
-            </ul>
+          <div className="portrait-label">
+            <span>Full-Stack Engineer</span>
+            <strong>Jiwon Lee</strong>
           </div>
-        </div>
-
-        <p className="slug pb-6 text-primary/90">Software Engineering · Machine Learning · Full-Stack</p>
         </div>
       </div>
 
-      <figure className="relative">
-        <TorontoSkyline className="pointer-events-none relative block h-[200px] w-full overflow-visible sm:h-[260px] lg:h-[340px]" />
+      {/* RIGHT: echo type + meta */}
+      <div
+        className="relative flex flex-col justify-center overflow-hidden"
+        style={{ padding: '0 48px 0 36px', zIndex: 1 }}
+      >
+        {/* JIWON echo type */}
+        <div className="echo-group" aria-label="Jiwon" style={{ position: 'relative', lineHeight: 0.82 }}>
+          <span className="echo-line e-solid">JIWON</span>
+          <span className="echo-line e-ghost-1" aria-hidden>JIWON</span>
+          <span className="echo-line e-ghost-2" aria-hidden>JIWON</span>
+        </div>
+
+        {/* Lee + 이지원 */}
         <div
-          aria-hidden
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-b from-transparent to-background"
-        />
-        {/* Plate caption, set over the lake */}
-        <figcaption className="absolute inset-x-0 bottom-3 hidden px-4 sm:block sm:px-6">
-          <p className="slug mx-auto max-w-7xl text-right text-[10px] text-muted-foreground/80">
-            Fig. 1 — The waterfront from the islands,{" "}
-            <span className="dark:hidden">morning</span>
-            <span className="hidden dark:inline">after dark</span>
+          className="flex items-baseline gap-4"
+          style={{ marginTop: 'clamp(.5rem,2vw,1.2rem)' }}
+        >
+          <span
+            className="font-display italic"
+            style={{
+              fontSize: 'clamp(2rem,6vw,4.5rem)',
+              fontWeight: 700,
+              letterSpacing: '-.02em',
+              color: 'rgba(242,236,224,.55)',
+            }}
+          >
+            Lee.
+          </span>
+          <span
+            className="font-sans font-bold uppercase"
+            style={{ fontSize: 'clamp(1rem,2.5vw,1.8rem)', letterSpacing: '.12em', color: '#c47a0a' }}
+          >
+            이지원
+          </span>
+        </div>
+
+        {/* Meta */}
+        <div className="flex flex-col" style={{ marginTop: 'clamp(1.5rem,4vw,2.5rem)', gap: 14 }}>
+          {/* Location + clock */}
+          <div
+            className="font-sans text-[11px] font-medium uppercase tracking-[.08em]"
+            style={{ color: 'rgba(242,236,224,.35)', display: 'flex', alignItems: 'center', gap: 10 }}
+          >
+            <span>Toronto · 43.65° N 79.38° W</span>
+            <span aria-hidden style={{ width: 1, height: 10, background: 'rgba(242,236,224,.15)', display: 'inline-block' }} />
+            <span>
+              <LiveClock seconds={false} />
+            </span>
+          </div>
+
+          {/* Role */}
+          <div
+            className="font-sans text-[12px] font-medium uppercase tracking-[.07em]"
+            style={{ color: 'rgba(242,236,224,.38)', display: 'flex', alignItems: 'center', gap: 10 }}
+          >
+            <span
+              style={{
+                width: 5, height: 5,
+                background: '#72c99a',
+                borderRadius: '50%',
+                animation: 'breathe 2.8s ease-in-out infinite',
+                flexShrink: 0,
+              }}
+            />
+            SWE Intern · INVENTIS Korea, Seoul
+          </div>
+
+          {/* Description */}
+          <p
+            className="font-sans font-light leading-relaxed"
+            style={{
+              fontSize: 14,
+              lineHeight: 1.72,
+              color: 'rgba(242,236,224,.5)',
+              maxWidth: '42ch',
+            }}
+          >
+            CS student at Western University building GPU simulations,
+            ML pipelines, and production web apps —
+            with a designer's eye for the interface.
           </p>
-        </figcaption>
-      </figure>
+
+          {/* CTAs */}
+          <div className="flex items-center gap-3" style={{ marginTop: 4 }}>
+            <a
+              href="#projects"
+              className="font-sans text-[11px] font-bold uppercase tracking-[.07em] transition-opacity hover:opacity-80"
+              style={{
+                background: '#c47a0a',
+                color: '#142e1e',
+                padding: '12px 20px',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 7,
+                textDecoration: 'none',
+                borderRadius: 2,
+              }}
+            >
+              Selected Work
+            </a>
+            <a
+              href="#ask"
+              className="font-sans text-[11px] font-bold uppercase tracking-[.07em] transition-colors"
+              style={{
+                background: 'transparent',
+                color: 'rgba(242,236,224,.55)',
+                border: '1px solid rgba(242,236,224,.2)',
+                padding: '12px 20px',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 7,
+                textDecoration: 'none',
+                borderRadius: 2,
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLAnchorElement).style.color = '#f2ece0';
+                (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(242,236,224,.4)';
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(242,236,224,.55)';
+                (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(242,236,224,.2)';
+              }}
+            >
+              Ask My AI →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile layout override */}
+      <style>{`
+        @media (max-width: 768px) {
+          #top { grid-template-columns: 1fr !important; }
+          #top > div:first-child { min-height: 45vw; }
+          #top > div:first-child > .portrait-frame { margin: 20px 20px 0 !important; height: 240px; flex: none !important; }
+          #top > div:last-child { padding: 28px 24px 48px !important; }
+        }
+      `}</style>
     </header>
   );
 };
