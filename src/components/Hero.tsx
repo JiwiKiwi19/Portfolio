@@ -56,7 +56,7 @@ const Hero = () => {
             src="/portrait.jpg"
             alt="Jiwon Lee"
             className="absolute inset-0 h-full w-full object-cover"
-            style={{ objectPosition: 'center top' }}
+            style={{ objectPosition: 'left top' }}
           />
 
           <div className="portrait-label">
