@@ -7,170 +7,162 @@ All colors MUST be HSL.
 */
 
 @layer base {
-  /* ===== Day — "Morning edition": Toronto in daylight. Warm newsprint, deep navy ink, Toronto blue ===== */
+  /* ===== Day — cream editorial (V5 body) ===== */
   :root {
-    --background: 40 33% 96%;
-    --foreground: 224 45% 12%;
+    --background: 43 37% 89%;       /* #ede7d8 paper */
+    --foreground: 29 24% 8%;        /* #1a1510 ink */
 
-    --card: 0 0% 100%;
-    --card-foreground: 224 45% 12%;
+    --card: 40 30% 93%;
+    --card-foreground: 29 24% 8%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 224 45% 12%;
+    --popover: 40 30% 93%;
+    --popover-foreground: 29 24% 8%;
 
-    /* Deeper Toronto blue — the night cyan fails contrast on white */
-    --primary: 199 89% 36%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 145 36% 17%;         /* #1b3a28 forest green */
+    --primary-foreground: 40 41% 91%; /* #f2ece0 cream */
 
-    --secondary: 214 32% 94%;
-    --secondary-foreground: 224 45% 12%;
+    --secondary: 42 22% 83%;
+    --secondary-foreground: 29 24% 8%;
 
-    --muted: 214 25% 92%;
-    --muted-foreground: 220 15% 38%;
+    --muted: 42 20% 85%;
+    --muted-foreground: 27 11% 38%;
 
-    --accent: 214 40% 92%;
-    --accent-foreground: 224 45% 12%;
+    --accent: 36 90% 40%;           /* #c47a0a amber */
+    --accent-foreground: 40 41% 91%;
 
     --destructive: 0 72% 45%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 216 22% 86%;
-    --input: 216 22% 80%;
-    --ring: 199 89% 36%;
+    --border: 36 18% 78%;
+    --input: 36 18% 75%;
+    --ring: 145 36% 17%;
 
-    /* Editorial: crisp corners, hairline rules instead of rounded cards */
-    --radius: 0.25rem;
+    --radius: 0.125rem;
 
-    --city-violet: 276 60% 48%;
-    --city-amber: 32 90% 45%;
-    /* CN Tower aviation beacon — "live" indicators */
-    --city-beacon: 2 78% 50%;
+    --city-violet: 145 36% 17%;
+    --city-amber: 36 90% 40%;
+    --city-beacon: 36 90% 40%;
 
-    /* Ambient page/hero light: warm sun + clear sky */
-    --glow-a: 38 95% 60%;
-    --glow-b: 199 89% 50%;
+    --glow-a: 36 90% 40%;
+    --glow-b: 145 36% 30%;
 
-    --shadow-elegant: 0 16px 40px -20px hsl(199 89% 36% / 0.35);
-    --shadow-card: 0 1px 2px hsl(224 40% 20% / 0.05), 0 14px 32px -20px hsl(224 40% 20% / 0.2);
+    --shadow-elegant: 0 16px 40px -20px hsl(145 36% 17% / 0.25);
+    --shadow-card: 0 1px 2px hsl(29 24% 8% / 0.05), 0 14px 32px -20px hsl(29 24% 8% / 0.12);
 
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-    --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 224 45% 12%;
-    --sidebar-primary: 199 89% 36%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 214 40% 92%;
-    --sidebar-accent-foreground: 224 45% 12%;
-    --sidebar-border: 216 22% 86%;
-    --sidebar-ring: 199 89% 36%;
+    --sidebar-background: 40 30% 93%;
+    --sidebar-foreground: 29 24% 8%;
+    --sidebar-primary: 145 36% 17%;
+    --sidebar-primary-foreground: 40 41% 91%;
+    --sidebar-accent: 42 22% 83%;
+    --sidebar-accent-foreground: 29 24% 8%;
+    --sidebar-border: 36 18% 78%;
+    --sidebar-ring: 145 36% 17%;
 
-    /* Skyline (components/TorontoSkyline.tsx) — full colors */
-    --sky-haze-mid: hsl(204 70% 86% / 0.7);
-    --sky-haze-end: hsl(204 65% 82%);
-    --sky-glow-1: hsl(40 95% 62% / 0.32);
-    --sky-glow-2: hsl(199 80% 60% / 0.1);
-    --sky-far: hsl(210 28% 80%);
-    --sky-near: hsl(213 28% 55%);
-    --sky-rim: hsl(0 0% 100% / 0.55);
-    --sky-tower-edge: hsl(210 12% 66%);
-    --sky-tower-mid: hsl(210 14% 84%);
-    --sky-pod: hsl(212 16% 62%);
-    --sky-mast: hsl(212 12% 55%);
+    /* Skyline — day: forest palette */
+    --sky-haze-mid: hsl(145 20% 72% / 0.7);
+    --sky-haze-end: hsl(145 18% 68%);
+    --sky-glow-1: hsl(36 90% 60% / 0.22);
+    --sky-glow-2: hsl(145 36% 40% / 0.1);
+    --sky-far: hsl(145 15% 65%);
+    --sky-near: hsl(145 20% 45%);
+    --sky-rim: hsl(0 0% 100% / 0.45);
+    --sky-tower-edge: hsl(145 12% 50%);
+    --sky-tower-mid: hsl(145 10% 72%);
+    --sky-pod: hsl(145 14% 52%);
+    --sky-mast: hsl(145 10% 44%);
     --sky-pod-ring-opacity: 0.45;
-    --sky-dome: hsl(210 25% 92%);
-    --sky-dome-base: hsl(214 20% 58%);
-    --sky-dome-rib: hsl(214 30% 40% / 0.25);
+    --sky-dome: hsl(145 12% 82%);
+    --sky-dome-base: hsl(145 14% 50%);
+    --sky-dome-rib: hsl(145 20% 32% / 0.2);
     --sky-stadium-opacity: 0;
-    --sky-win-warm: hsl(205 55% 86%);
-    --sky-win-cool: hsl(195 75% 90%);
+    --sky-win-warm: hsl(36 70% 78%);
+    --sky-win-cool: hsl(145 30% 80%);
     --sky-win-opacity: 0.5;
-    --sky-lake-top: hsl(202 50% 66%);
-    --sky-lake-bottom: hsl(204 45% 86%);
-    --sky-reflect-opacity: 0.2;
-    --sky-wave: hsl(0 0% 100% / 0.55);
-    --sky-shore: hsl(204 40% 96% / 0.6);
+    --sky-lake-top: hsl(145 18% 54%);
+    --sky-lake-bottom: hsl(145 16% 74%);
+    --sky-reflect-opacity: 0.18;
+    --sky-wave: hsl(0 0% 100% / 0.45);
+    --sky-shore: hsl(43 30% 90% / 0.6);
     --sky-shore-opacity: 0;
   }
 
-  /* ===== Night — "Night edition": Toronto after dark ===== */
+  /* ===== Night — forest green (V5 hero) ===== */
   .dark {
-    /* Midnight navy sky; sodium-vapour amber (street lights, lit windows) as the lead accent */
-    --background: 226 45% 5%;
-    --foreground: 40 30% 93%;
+    --background: 143 40% 13%;     /* #142e1e deep forest */
+    --foreground: 40 41% 91%;      /* #f2ece0 cream */
 
-    --card: 225 38% 8%;
-    --card-foreground: 210 40% 96%;
+    --card: 143 36% 16%;
+    --card-foreground: 40 41% 91%;
 
-    --popover: 225 38% 9%;
-    --popover-foreground: 210 40% 96%;
+    --popover: 143 36% 16%;
+    --popover-foreground: 40 41% 91%;
 
-    /* Sodium amber — the same light as the skyline's windows */
-    --primary: 38 92% 62%;
-    --primary-foreground: 226 50% 6%;
+    --primary: 36 90% 40%;         /* #c47a0a amber */
+    --primary-foreground: 143 40% 13%;
 
-    --secondary: 225 30% 12%;
-    --secondary-foreground: 210 40% 96%;
+    --secondary: 144 35% 22%;      /* #254d35 mid green */
+    --secondary-foreground: 40 41% 91%;
 
-    --muted: 225 28% 13%;
-    --muted-foreground: 220 16% 68%;
+    --muted: 144 32% 18%;
+    --muted-foreground: 40 25% 62%;
 
-    /* Kept subtle so shadcn hover/focus surfaces stay calm */
-    --accent: 225 32% 16%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 36 90% 40%;
+    --accent-foreground: 143 40% 13%;
 
-    --destructive: 0 75% 60%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 72% 45%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 224 24% 18%;
-    --input: 224 24% 22%;
-    --ring: 38 92% 62%;
+    --border: 143 20% 24%;
+    --input: 143 20% 27%;
+    --ring: 36 90% 40%;
 
-    /* City-light accents, used sparingly */
-    --city-violet: 288 80% 70%;
-    --city-amber: 38 95% 64%;
-    --city-beacon: 2 85% 62%;
+    --city-violet: 36 70% 65%;
+    --city-amber: 36 90% 50%;
+    --city-beacon: 36 90% 50%;
 
-    --glow-a: 24 85% 55%;
-    --glow-b: 189 94% 56%;
+    --glow-a: 36 90% 50%;
+    --glow-b: 145 50% 35%;
 
-    /* Shadows */
-    --shadow-elegant: 0 18px 50px -20px hsl(38 92% 62% / 0.25);
-    --shadow-card: 0 1px 0 hsl(0 0% 100% / 0.04) inset, 0 20px 40px -28px hsl(226 70% 2% / 0.9);
+    --shadow-elegant: 0 18px 50px -20px hsl(36 90% 40% / 0.2);
+    --shadow-card: 0 1px 0 hsl(0 0% 100% / 0.03) inset, 0 20px 40px -28px hsl(143 50% 5% / 0.9);
 
-    --sidebar-background: 225 38% 8%;
-    --sidebar-foreground: 210 40% 96%;
-    --sidebar-primary: 38 92% 62%;
-    --sidebar-primary-foreground: 226 50% 6%;
-    --sidebar-accent: 225 32% 16%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 224 24% 18%;
-    --sidebar-ring: 38 92% 62%;
+    --sidebar-background: 143 36% 16%;
+    --sidebar-foreground: 40 41% 91%;
+    --sidebar-primary: 36 90% 40%;
+    --sidebar-primary-foreground: 143 40% 13%;
+    --sidebar-accent: 144 35% 22%;
+    --sidebar-accent-foreground: 40 41% 91%;
+    --sidebar-border: 143 20% 24%;
+    --sidebar-ring: 36 90% 40%;
 
-    --sky-haze-mid: hsl(232 45% 14% / 0.9);
-    --sky-haze-end: hsl(240 40% 16%);
-    --sky-glow-1: hsl(24 85% 48% / 0.26);
-    --sky-glow-2: hsl(222 60% 30% / 0.1);
-    --sky-far: hsl(230 32% 12%);
-    --sky-near: hsl(226 42% 6.5%);
-    --sky-rim: hsl(189 94% 60% / 0.16);
-    --sky-tower-edge: hsl(226 35% 9.5%);
-    --sky-tower-mid: hsl(226 30% 16%);
-    --sky-pod: hsl(226 30% 15%);
-    --sky-mast: hsl(226 25% 22%);
-    --sky-pod-ring-opacity: 0.9;
-    --sky-dome: hsl(226 32% 13%);
-    --sky-dome-base: hsl(226 40% 8%);
-    --sky-dome-rib: hsl(189 94% 60% / 0.16);
-    --sky-stadium-opacity: 0.55;
-    --sky-win-warm: hsl(38 95% 66%);
-    --sky-win-cool: hsl(189 90% 70%);
-    --sky-win-opacity: 0.85;
-    --sky-lake-top: hsl(228 45% 9%);
-    --sky-lake-bottom: hsl(226 45% 5%);
-    --sky-reflect-opacity: 0.28;
-    --sky-wave: hsl(189 94% 70% / 0.08);
-    --sky-shore: hsl(38 95% 70%);
-    --sky-shore-opacity: 0.7;
+    /* Skyline — night: forest green into amber */
+    --sky-haze-mid: hsl(143 35% 10% / 0.9);
+    --sky-haze-end: hsl(143 38% 8%);
+    --sky-glow-1: hsl(36 90% 40% / 0.22);
+    --sky-glow-2: hsl(143 36% 20% / 0.1);
+    --sky-far: hsl(143 30% 10%);
+    --sky-near: hsl(143 38% 7%);
+    --sky-rim: hsl(36 90% 60% / 0.14);
+    --sky-tower-edge: hsl(143 32% 9%);
+    --sky-tower-mid: hsl(143 28% 15%);
+    --sky-pod: hsl(143 28% 14%);
+    --sky-mast: hsl(143 24% 20%);
+    --sky-pod-ring-opacity: 0.85;
+    --sky-dome: hsl(143 30% 12%);
+    --sky-dome-base: hsl(143 36% 8%);
+    --sky-dome-rib: hsl(36 90% 60% / 0.14);
+    --sky-stadium-opacity: 0.5;
+    --sky-win-warm: hsl(36 85% 60%);
+    --sky-win-cool: hsl(145 60% 55%);
+    --sky-win-opacity: 0.8;
+    --sky-lake-top: hsl(143 38% 8%);
+    --sky-lake-bottom: hsl(143 40% 5%);
+    --sky-reflect-opacity: 0.24;
+    --sky-wave: hsl(36 90% 60% / 0.07);
+    --sky-shore: hsl(36 80% 65%);
+    --sky-shore-opacity: 0.6;
   }
 }
 
@@ -207,15 +199,15 @@ All colors MUST be HSL.
 }
 
 @layer components {
-  /* Small-caps dateline / label text, like a newspaper slug */
+  /* Small-caps dateline / label text — Space Grotesk uppercase */
   .slug {
-    @apply font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-muted-foreground;
+    @apply font-sans text-[11px] font-medium uppercase tracking-[0.12em] text-muted-foreground;
   }
 
-  /* A single lit window from the skyline — the site's marker for "current" / "active" */
+  /* A single lit element — the site's marker for "current" / "active" */
   .lit {
-    @apply inline-block h-[7px] w-[6px] shrink-0 bg-primary;
-    box-shadow: 0 0 10px hsl(var(--primary) / 0.55);
+    @apply inline-block h-[6px] w-[5px] shrink-0 bg-primary;
+    box-shadow: 0 0 8px hsl(var(--primary) / 0.5);
   }
 
   /* Underlined text link in the editorial style */
@@ -225,7 +217,103 @@ All colors MUST be HSL.
 
   /* Plain-text technology list: "C# / ASP.NET / REST APIs" */
   .stack-line {
-    @apply font-mono text-[12.5px] leading-relaxed text-muted-foreground;
+    @apply font-sans text-[12px] font-light leading-relaxed text-muted-foreground;
+  }
+
+  /* V5 portrait frame */
+  .portrait-frame {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+  }
+  .portrait-frame::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border: 1.5px solid rgba(242,236,224,.18);
+    pointer-events: none;
+    z-index: 2;
+  }
+  .portrait-frame img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    filter: grayscale(1) brightness(0.68) contrast(1.18);
+  }
+  /* Alpenglow overlay — warm rose from upper corner, screen blend */
+  .portrait-frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      148deg,
+      rgba(195, 90, 72, 0.52) 0%,
+      rgba(160, 60, 95, 0.28) 48%,
+      rgba(80, 30, 55, 0.08) 80%,
+      transparent 100%
+    );
+    mix-blend-mode: screen;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .portrait-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    padding: 48px 20px 18px;
+    background: linear-gradient(to top, rgba(20,46,30,.85) 0%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .portrait-label span {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: rgba(242,236,224,.55);
+  }
+  .portrait-label strong {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: rgba(242,236,224,.9);
+    letter-spacing: -.01em;
+  }
+
+  /* V5 echo type */
+  .echo-line {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: clamp(4rem, 13vw, 10rem);
+    letter-spacing: -0.04em;
+    line-height: 0.82;
+  }
+  .e-ghost-2 {
+    -webkit-text-stroke: 1px rgba(242,236,224,.1);
+    color: transparent;
+    transform: translateX(2.2em);
+    margin-top: -0.82em;
+  }
+  .e-ghost-1 {
+    -webkit-text-stroke: 1.5px rgba(242,236,224,.22);
+    color: transparent;
+    transform: translateX(1.1em);
+    margin-top: -0.82em;
+  }
+  .e-solid {
+    color: #f2ece0;
+    position: relative;
+    z-index: 2;
+  }
+  .echo-group .echo-line:first-child {
+    margin-top: 0;
   }
 
   /* Scroll reveal (see components/Reveal.tsx) */
@@ -241,6 +329,12 @@ All colors MUST be HSL.
     opacity: 1;
     transform: none;
   }
+}
+
+/* V5 status dot breathe */
+@keyframes breathe {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .35; transform: scale(.6); }
 }
 
 /* Skyline lights */

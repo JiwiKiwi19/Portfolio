@@ -15,8 +15,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["'Instrument Sans'", "Helvetica Neue", "Arial", "sans-serif"],
-        display: ["'Instrument Serif'", "Georgia", "serif"],
+        sans: ["'Space Grotesk'", "Helvetica Neue", "Arial", "sans-serif"],
+        display: ["'Playfair Display'", "Georgia", "serif"],
         mono: ["'IBM Plex Mono'", "ui-monospace", "SFMono-Regular", "monospace"],
       },
       colors: {

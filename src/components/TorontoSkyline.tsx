@@ -113,11 +113,17 @@ const SHORE_LIGHTS: number[] = (() => {
 // for Day and Night without swapping assets or shifting layout.
 const v = (name: string) => `var(--sky-${name})`;
 
-const TorontoSkyline = ({ className }: { className?: string }) => (
+const TorontoSkyline = ({
+  className,
+  preserveAspectRatio = "xMidYMax slice",
+}: {
+  className?: string;
+  preserveAspectRatio?: string;
+}) => (
   <svg
     className={className}
     viewBox="0 0 1440 320"
-    preserveAspectRatio="xMidYMax slice"
+    preserveAspectRatio={preserveAspectRatio}
     aria-hidden="true"
     focusable="false"
   >
